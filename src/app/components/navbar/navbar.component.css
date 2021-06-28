@@ -1,5 +1,14 @@
 app-root > app-navbar > p-menubar > div {
   padding: 10px 15px;
   border: none;
-  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 15%);
 }
+
+/* .p-menubar {
+  z-index: 99;
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 10px 20px !important;
+  border: none !important;
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 15%) !important;
+} */

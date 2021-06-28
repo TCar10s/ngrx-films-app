@@ -3,12 +3,13 @@ import { ActivatedRoute } from '@angular/router';
 import { FilmDetails } from 'src/app/interfaces/film-details';
 import { FilmsService } from 'src/app/services/films.service';
 import { Location } from '@angular/common';
+import { OnDestroy } from '@angular/core';
 @Component({
   selector: 'app-films',
   templateUrl: './films.component.html',
   styleUrls: ['./films.component.css'],
 })
-export class FilmsComponent implements OnInit {
+export class FilmsComponent implements OnInit, OnDestroy {
   public film: FilmDetails;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,4 +28,8 @@ export class FilmsComponent implements OnInit {
   backPage = () => {
     this.location.back();
   };
+
+  ngOnDestroy() {
+    this.filmService.resetBillboardPage();
+  }
 }
