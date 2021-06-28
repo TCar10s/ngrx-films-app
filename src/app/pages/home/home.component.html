@@ -1,0 +1,12 @@
+<h1>Cartelera</h1>
+
+<div class="p-d-flex p-jc-center" *ngIf="films.length > 0">
+  <app-slider *ngIf="films && !loader" [films]="films"></app-slider>
+</div>
+
+<app-skeleton-loader *ngIf="loader"></app-skeleton-loader>
+
+<h2 class="p-mt-6">Películas</h2>
+<div *ngIf="films.length > 0">
+  <app-films-poster-grid [films]="films"></app-films-poster-grid>
+</div>

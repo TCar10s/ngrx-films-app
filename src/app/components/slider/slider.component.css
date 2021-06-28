@@ -1,0 +1,23 @@
+.swiper-container {
+  height: 330px;
+  width: 100vw;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #fff;
+}
+
+@media(min-width: 798px) {
+  .swiper-slide {
+    background-position: unset !important;
+  }
+}
+
+.film-description {
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  padding: 5px 30px;
+  bottom: 0;
+  width: 100vw;
+}

@@ -1,0 +1,10 @@
+<p-menubar class="navbar" [model]="items">
+    <ng-template pTemplate="start">
+        <a routerLink="/home">
+            <img src="../../../assets/img/film-icon.svg" height="40" class="p-mr-2">
+        </a>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <input type="text" pInputText placeholder="Buscar película">
+    </ng-template>
+</p-menubar>

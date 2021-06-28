@@ -1,0 +1,15 @@
+<div class="list-films">
+  <div *ngFor="let film of films">
+    <img
+      class="poster p-shadow-5"
+      src="https://image.tmdb.org/t/p/original{{ film.poster_path }}"
+      alt="film"
+      width="100%"
+    />
+    <h3>{{ film.title }}</h3>
+    <div class="p-d-flex p-jc-between">
+      <span>*****</span>
+      <span>{{ film.vote_average | number: "1.1-2" }}</span>
+    </div>
+  </div>
+</div>
