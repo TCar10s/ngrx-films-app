@@ -5,6 +5,12 @@ import { RouterModule } from '@angular/router';
 
 // Others
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import {
+  LazyLoadImageModule,
+  LAZYLOAD_IMAGE_HOOKS,
+  ScrollHooks,
+} from 'ng-lazyload-image';
+import { RatingModule } from 'ng-starrating';
 
 // PrimeNG
 import { MenubarModule } from 'primeng/menubar';
@@ -34,6 +40,8 @@ import { FilmsPosterGridComponent } from './films-poster-grid/films-poster-grid.
     RouterModule,
     GalleriaModule,
     NgxSkeletonLoaderModule,
+    LazyLoadImageModule,
+    RatingModule,
   ],
   exports: [
     NavbarComponent,
@@ -41,5 +49,6 @@ import { FilmsPosterGridComponent } from './films-poster-grid/films-poster-grid.
     SkeletonLoaderComponent,
     FilmsPosterGridComponent,
   ],
+  providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
 })
 export class ComponentsModule {}

@@ -1,15 +1,32 @@
 <div class="list-films">
   <div *ngFor="let film of films">
-    <img
-      class="poster p-shadow-5"
-      src="https://image.tmdb.org/t/p/original{{ film.poster_path }}"
-      alt="film"
-      width="100%"
-    />
-    <h3>{{ film.title }}</h3>
-    <div class="p-d-flex p-jc-between">
-      <span>*****</span>
-      <span>{{ film.vote_average | number: "1.1-2" }}</span>
+    <div *ngIf="!loader">
+      <img
+        class="poster p-shadow-5"
+        height="300px"
+        width="100%"
+        [defaultImage]=""
+        [lazyLoad]="'https://image.tmdb.org/t/p/original' + film.poster_path"
+      />
+      <h3>{{ film.title }}</h3>
+
+      <div class="p-d-flex p-jc-between">
+        <star-rating
+          [value]="film.vote_average * .5"
+          totalstars="5"
+          checkedcolor="yellow"
+          uncheckedcolor="grey"
+          size="14px"
+          readonly="false"
+        ></star-rating>
+
+        <span>{{ film.vote_average * .5 | number: "1.1-2" }}</span>
+      </div>
     </div>
+
+    <app-skeleton-loader
+      *ngIf="loader"
+      [properties]="properties"
+    ></app-skeleton-loader>
   </div>
 </div>

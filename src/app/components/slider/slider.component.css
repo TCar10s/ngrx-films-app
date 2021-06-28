@@ -1,5 +1,5 @@
 .swiper-container {
-  height: 330px;
+  height: 400px;
   width: 100vw;
 }
 
@@ -10,7 +10,10 @@
 
 @media(min-width: 798px) {
   .swiper-slide {
-    background-position: unset !important;
+    background-position: 0px -100px !important;
+  }
+  .swiper-container {
+    width: calc(100vw - 20px);
   }
 }
 

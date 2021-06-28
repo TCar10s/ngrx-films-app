@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, Input, OnInit } from '@angular/core';
 import { Film } from '../../interfaces/billboard-response';
 
@@ -8,10 +9,22 @@ import { Film } from '../../interfaces/billboard-response';
 })
 export class FilmsPosterGridComponent implements OnInit {
   @Input() films: Film[];
+  public loader: boolean;
+  public properties: any;
 
-  constructor() {}
+  constructor() {
+    this.loader = true;
+    this.properties = {};
+  }
 
   ngOnInit(): void {
-    console.log(this.films);
+    setTimeout(() => {
+      this.loader = false;
+    }, 1000);
+    this.properties = {
+      'border-radius': '10px',
+      height: '300px',
+      'background-color': '#1F2D40',
+    };
   }
 }
