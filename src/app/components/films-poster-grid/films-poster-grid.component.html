@@ -1,6 +1,6 @@
 <div class="list-films">
   <div *ngFor="let film of films">
-    <div *ngIf="!loader">
+    <div *ngIf="!loader" (click)="viewMoreDetails(film)">
       <img
         class="poster p-shadow-5"
         width="100%"
@@ -11,7 +11,7 @@
 
       <div class="p-d-flex p-jc-between">
         <star-rating
-          [value]="film.vote_average * .5"
+          [value]="film.vote_average * 0.5"
           totalstars="5"
           checkedcolor="yellow"
           uncheckedcolor="grey"
@@ -19,7 +19,7 @@
           readonly="false"
         ></star-rating>
 
-        <span>{{ film.vote_average * .5 | number: "1.1-2" }}</span>
+        <span>{{ film.vote_average * 0.5 | number: "1.1-2" }}</span>
       </div>
     </div>
 

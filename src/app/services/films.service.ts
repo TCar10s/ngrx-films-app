@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import { BillboardResponse, Film } from '../interfaces/billboard-response';
+import { FilmDetails } from '../interfaces/film-details';
 
 /*
   - El operador tab de los rxjs/opetaros, ejecuta cierto código
@@ -35,7 +36,7 @@ export class FilmsService {
 
   resetBillboardPage = () => {
     this.billboardPage = 1;
-  }
+  };
 
   getBillboard = (): Observable<Film[]> => {
     if (this.loading) return of([]); // Cargando películas
@@ -61,5 +62,11 @@ export class FilmsService {
         params,
       })
       .pipe(map((resp) => resp.results));
+  };
+
+  getFilmsDetails = (id: string) => {
+    return this.http.get<FilmDetails>(`${this.baseUrl}/movie/${id}`, {
+      params: this.params,
+    });
   };
 }

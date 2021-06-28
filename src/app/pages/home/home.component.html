@@ -6,7 +6,7 @@
 
 <p-skeleton *ngIf="loader" width="100%" height="400px"></p-skeleton>
 
-<h2 class="p-mt-6">Películas</h2>
+<h1 class="p-mt-6">Películas</h1>
 <div *ngIf="films.length > 0">
   <app-films-poster-grid [films]="films"></app-films-poster-grid>
 </div>
