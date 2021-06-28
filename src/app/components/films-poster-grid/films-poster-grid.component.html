@@ -4,8 +4,8 @@
       <img
         class="poster p-shadow-5"
         width="100%"
-        [defaultImage]=""
-        [lazyLoad]="'https://image.tmdb.org/t/p/original' + film.poster_path"
+        [defaultImage]="'./assets/img/no-image.jpg'"
+        [lazyLoad]="film.poster_path | poster"
       />
       <h3>{{ film.title }}</h3>
 

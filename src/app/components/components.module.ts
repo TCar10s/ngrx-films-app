@@ -23,6 +23,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { SliderComponent } from './slider/slider.component';
 import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
 import { FilmsPosterGridComponent } from './films-poster-grid/films-poster-grid.component';
+import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FilmsPosterGridComponent } from './films-poster-grid/films-poster-grid.
     NgxSkeletonLoaderModule,
     LazyLoadImageModule,
     RatingModule,
+    PipesModule,
   ],
   exports: [
     NavbarComponent,
