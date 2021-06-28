@@ -4,7 +4,7 @@
       <img
         class="poster p-shadow-5"
         width="100%"
-        [defaultImage]="'./assets/img/no-image.jpg'"
+        [defaultImage]=""
         [lazyLoad]="film.poster_path | poster"
       />
       <h3>{{ film.title }}</h3>
@@ -23,9 +23,6 @@
       </div>
     </div>
 
-    <app-skeleton-loader
-      *ngIf="loader"
-      [properties]="properties"
-    ></app-skeleton-loader>
+    <p-skeleton *ngIf="loader" width="100%" height="310px"></p-skeleton>
   </div>
 </div>

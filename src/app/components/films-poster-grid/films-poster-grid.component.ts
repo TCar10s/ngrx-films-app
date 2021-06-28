@@ -9,22 +9,13 @@ import { Film } from '../../interfaces/billboard-response';
 })
 export class FilmsPosterGridComponent implements OnInit {
   @Input() films: Film[];
-  public loader: boolean;
-  public properties: any;
+  public loader: boolean = true;
 
-  constructor() {
-    this.loader = true;
-    this.properties = {};
-  }
+  constructor() {}
 
   ngOnInit(): void {
     setTimeout(() => {
       this.loader = false;
     }, 1000);
-    this.properties = {
-      'border-radius': '10px',
-      height: '300px',
-      'background-color': '#1F2D40',
-    };
   }
 }

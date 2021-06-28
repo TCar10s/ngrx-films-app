@@ -33,6 +33,10 @@ export class FilmsService {
     };
   }
 
+  resetBillboardPage = () => {
+    this.billboardPage = 1;
+  }
+
   getBillboard = (): Observable<Film[]> => {
     if (this.loading) return of([]); // Cargando películas
     this.loading = true;
@@ -47,5 +51,15 @@ export class FilmsService {
           this.loading = false;
         })
       );
+  };
+
+  searchFilms = (text: string): Observable<Film[]> => {
+    const params = { ...this.params, page: '1', query: text };
+
+    return this.http
+      .get<BillboardResponse>(`${this.baseUrl}/search/movie`, {
+        params,
+      })
+      .pipe(map((resp) => resp.results));
   };
 }

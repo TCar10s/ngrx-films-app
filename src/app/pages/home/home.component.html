@@ -4,10 +4,7 @@
   <app-slider *ngIf="films && !loader" [films]="filmsSlider"></app-slider>
 </div>
 
-<app-skeleton-loader
-  *ngIf="loader"
-  [properties]="properties"
-></app-skeleton-loader>
+<p-skeleton *ngIf="loader" width="100%" height="400px"></p-skeleton>
 
 <h2 class="p-mt-6">Películas</h2>
 <div *ngIf="films.length > 0">

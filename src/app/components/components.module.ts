@@ -4,7 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 
 // Others
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { SkeletonModule } from 'primeng/skeleton';
 import {
   LazyLoadImageModule,
   LAZYLOAD_IMAGE_HOOKS,
@@ -21,17 +21,11 @@ import { GalleriaModule } from 'primeng/galleria';
 
 // Components
 import { SliderComponent } from './slider/slider.component';
-import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
 import { FilmsPosterGridComponent } from './films-poster-grid/films-poster-grid.component';
 import { PipesModule } from '../pipes/pipes.module';
 
 @NgModule({
-  declarations: [
-    NavbarComponent,
-    SliderComponent,
-    SkeletonLoaderComponent,
-    FilmsPosterGridComponent,
-  ],
+  declarations: [NavbarComponent, SliderComponent, FilmsPosterGridComponent],
   imports: [
     CommonModule,
     MenubarModule,
@@ -40,17 +34,12 @@ import { PipesModule } from '../pipes/pipes.module';
     TabViewModule,
     RouterModule,
     GalleriaModule,
-    NgxSkeletonLoaderModule,
     LazyLoadImageModule,
     RatingModule,
     PipesModule,
+    SkeletonModule,
   ],
-  exports: [
-    NavbarComponent,
-    SliderComponent,
-    SkeletonLoaderComponent,
-    FilmsPosterGridComponent,
-  ],
+  exports: [NavbarComponent, SliderComponent, FilmsPosterGridComponent],
   providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
 })
 export class ComponentsModule {}
