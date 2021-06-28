@@ -1,7 +1,7 @@
 <h1>Cartelera</h1>
 
 <div class="p-d-flex p-jc-center" *ngIf="films.length > 0">
-  <app-slider *ngIf="films && !loader" [films]="films"></app-slider>
+  <app-slider *ngIf="films && !loader" [films]="filmsSlider"></app-slider>
 </div>
 
 <app-skeleton-loader

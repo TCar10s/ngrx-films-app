@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FilmsService } from '../../services/films.service';
 import { Film } from '../../interfaces/billboard-response';
 
@@ -9,8 +9,13 @@ import { Film } from '../../interfaces/billboard-response';
 })
 export class HomeComponent implements OnInit {
   public films: Film[];
+  public filmsSlider: Film[];
   public loader: boolean;
   public properties: any;
+  @HostListener('window:scroll', ['$event'])
+  onScroll() {
+    this.getMoreFilms();
+  }
 
   constructor(private filmServices: FilmsService) {
     this.films = [];
@@ -27,9 +32,25 @@ export class HomeComponent implements OnInit {
 
     this.filmServices.getBillboard().subscribe((resp) => {
       setTimeout(() => {
-        this.films = resp.results;
+        this.films = resp;
+        this.filmsSlider = resp;
         this.loader = false;
       }, 1000);
     });
   }
+
+  getMoreFilms = () => {
+    const pos =
+      (document.documentElement.scrollTop || document.body.scrollTop) + 1300;
+    const max =
+      document.documentElement.scrollHeight || document.body.scrollHeight;
+
+    if (pos > max) {
+      // TODO: llamar el servicio
+      if (this.filmServices.loading) return;
+      this.filmServices.getBillboard().subscribe((films) => {
+        this.films.push(...films);
+      });
+    }
+  };
 }
