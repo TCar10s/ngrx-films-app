@@ -27,7 +27,7 @@ const ROUTES: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forRoot(ROUTES, { useHash: true })],
+  imports: [CommonModule, RouterModule.forRoot(ROUTES)],
   exports: [
     // Los otros moódulos solo podran tener acceso (ver) estas exportaciones.
     RouterModule,
