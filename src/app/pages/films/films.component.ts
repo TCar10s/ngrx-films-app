@@ -5,6 +5,14 @@ import { FilmsService } from 'src/app/services/films.service';
 import { Location } from '@angular/common';
 import { OnDestroy } from '@angular/core';
 import { Cast } from '../../interfaces/credits-response';
+import { combineLatest } from 'rxjs';
+
+/*
+  El combineLatest recibe una cantidad x de observables y regresa
+  un array con todas las respuestas de los observables cuando ya
+  han emitido por lo menos 1 valor todos.
+*/
+
 @Component({
   selector: 'app-films',
   templateUrl: './films.component.html',
@@ -24,16 +32,26 @@ export class FilmsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const { id } = this.activatedRoute.snapshot.params;
-    this.filmService.getFilmsDetails(id).subscribe((film) => {
-      if (!film) {
-        return this.router.navigateByUrl('/home');
-      }
-      this.film = film;
-    });
 
-    this.filmService.getCast(id).subscribe((cast) => {
+    combineLatest([
+      this.filmService.getFilmsDetails(id),
+      this.filmService.getCast(id),
+    ]).subscribe(([film, cast]) => {
+      if (!film) return this.router.navigateByUrl('/home');
+      this.film = film;
       this.cast = cast.filter((actor) => actor.profile_path);
     });
+
+    // this.filmService.getFilmsDetails(id).subscribe((film) => {
+    //   if (!film) {
+    //     return this.router.navigateByUrl('/home');
+    //   }
+    //   this.film = film;
+    // });
+
+    // this.filmService.getCast(id).subscribe((cast) => {
+    //   this.cast = cast.filter((actor) => actor.profile_path);
+    // });
   }
 
   backPage = () => {
