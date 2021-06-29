@@ -7,7 +7,7 @@
     />
 
     <div class="p-mb-2">
-      <h1 class="p-text-normal p-mt-3">{{ film.title }}</h1>
+      <h1 class="p-text-normal">{{ film.title }}</h1>
 
       <div class="p-d-flex p-ai-center">
         <star-rating
@@ -23,6 +23,10 @@
 
       <p class="overview">{{ film.overview }}</p>
 
+      <div class="p-md-6 p-lg-6 p-mb-4" *ngIf="cast.length > 0">
+        <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
+      </div>
+
       <p-button
         label="Volver"
         icon="pi pi-arrow-left"
@@ -30,11 +34,6 @@
         (click)="backPage()"
       >
       </p-button>
-      
     </div>
   </div>
-</div>
-
-<div class="p-mt-5 p-mb-5" *ngIf="cast.length > 0">
-  <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
 </div>

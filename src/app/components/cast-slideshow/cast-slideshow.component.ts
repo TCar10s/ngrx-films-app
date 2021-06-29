@@ -22,7 +22,7 @@ export class CastSlideshowComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     const swiper = new Swiper('.swiper-container', {
-      slidesPerView: 5.3,
+      slidesPerView: 4.3,
       freeMode: true,
       spaceBetween: 15,
     });

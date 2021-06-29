@@ -14,10 +14,17 @@ h1 {
 
 @media (min-width: 576px) {
   .flex {
-    display: flex;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    column-gap: 20px;
   }
   .poster {
-    width: 40%;
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) {
+  .flex {
+    grid-template-columns: 35% 65%;
   }
 }

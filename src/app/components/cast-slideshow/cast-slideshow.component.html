@@ -3,10 +3,10 @@
     <div *ngFor="let actor of cast" class="swiper-slide">
       <div>
         <img
-          style="width: 100%"
           class="poster-cast p-shadow-3"
           [src]="actor.profile_path | poster"
           [alt]="actor.name"
+          height="100%"
         />
         {{ actor.name }}
       </div>
