@@ -1,7 +1,7 @@
 <div class="swiper-container">
   <div class="swiper-wrapper">
     <div *ngFor="let actor of cast" class="swiper-slide">
-      <div>
+      <div class="animate__animated animate__fadeIn">
         <img
           class="poster-cast p-shadow-3"
           [src]="actor.profile_path | poster"
