@@ -1,6 +1,6 @@
 body {
-  font-family: 'Raleway', sans-serif;
-  background-color: #17212f;
+  font-family: "Raleway", sans-serif;
+  background-color: #121212;
   color: #e6e6e6;
   margin: 0;
 }
@@ -12,11 +12,14 @@ body {
 }
 
 .p-menubar {
-  z-index: 99;
-  position: absolute;
-  left: 0;
-  right: 0;
   padding: 20px 20px !important;
   border: none !important;
-  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 15%) !important;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+    0 1px 5px 0 rgb(0 0 0 / 12%) !important;
+}
+
+@media (min-width: 769px) {
+  .p-menubar {
+    padding: 20px 90px !important;
+  }
 }

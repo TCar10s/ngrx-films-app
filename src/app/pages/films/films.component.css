@@ -9,5 +9,15 @@ h1 {
 }
 
 .overview {
-    font-size: 16px;
+  font-size: 16px;
+}
+
+@media (min-width: 576px) {
+  .flex {
+    display: flex;
+    gap: 20px;
+  }
+  .poster {
+    width: 40%;
+  }
 }

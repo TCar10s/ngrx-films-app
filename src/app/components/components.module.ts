@@ -23,9 +23,15 @@ import { GalleriaModule } from 'primeng/galleria';
 import { SliderComponent } from './slider/slider.component';
 import { FilmsPosterGridComponent } from './films-poster-grid/films-poster-grid.component';
 import { PipesModule } from '../pipes/pipes.module';
+import { CastSlideshowComponent } from './cast-slideshow/cast-slideshow.component';
 
 @NgModule({
-  declarations: [NavbarComponent, SliderComponent, FilmsPosterGridComponent],
+  declarations: [
+    NavbarComponent,
+    SliderComponent,
+    FilmsPosterGridComponent,
+    CastSlideshowComponent,
+  ],
   imports: [
     CommonModule,
     MenubarModule,
@@ -39,7 +45,12 @@ import { PipesModule } from '../pipes/pipes.module';
     PipesModule,
     SkeletonModule,
   ],
-  exports: [NavbarComponent, SliderComponent, FilmsPosterGridComponent],
+  exports: [
+    NavbarComponent,
+    SliderComponent,
+    FilmsPosterGridComponent,
+    CastSlideshowComponent,
+  ],
   providers: [{ provide: LAZYLOAD_IMAGE_HOOKS, useClass: ScrollHooks }],
 })
 export class ComponentsModule {}

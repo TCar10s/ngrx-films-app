@@ -8,9 +8,9 @@
   color: #fff;
 }
 
-@media(min-width: 798px) {
+@media (min-width: 798px) {
   .swiper-slide {
-    background-position: 0px -100px !important;
+    background-position: top !important;
   }
   .swiper-container {
     width: calc(100vw - 20px);
@@ -20,7 +20,11 @@
 .film-description {
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
-  padding: 5px 30px;
   bottom: 0;
+  padding: 5px 30px;
   width: 100vw;
+}
+
+.text-white {
+  color: #fff;
 }

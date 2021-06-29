@@ -1,4 +1,4 @@
-<h1 class="margin-top">Cartelera</h1>
+<h1>Cartelera</h1>
 
 <div class="p-d-flex p-jc-center" *ngIf="films.length > 0">
   <app-slider *ngIf="films && !loader" [films]="filmsSlider"></app-slider>
@@ -10,3 +10,9 @@
 <div *ngIf="films.length > 0">
   <app-films-poster-grid [films]="films"></app-films-poster-grid>
 </div>
+
+<p-scrollTop
+  styleClass="custom-scrolltop"
+  [threshold]="100"
+  icon="pi pi-arrow-up"
+></p-scrollTop>

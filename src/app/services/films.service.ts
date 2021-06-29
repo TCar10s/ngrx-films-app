@@ -1,9 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { tap, map, catchError } from 'rxjs/operators';
 import { BillboardResponse, Film } from '../interfaces/billboard-response';
 import { FilmDetails } from '../interfaces/film-details';
+import { CreditsResponse } from '../interfaces/credits-response';
 
 /*
   - El operador tab de los rxjs/opetaros, ejecuta cierto código
@@ -65,8 +66,21 @@ export class FilmsService {
   };
 
   getFilmsDetails = (id: string) => {
-    return this.http.get<FilmDetails>(`${this.baseUrl}/movie/${id}`, {
-      params: this.params,
-    });
+    return this.http
+      .get<FilmDetails>(`${this.baseUrl}/movie/${id}`, {
+        params: this.params,
+      })
+      .pipe(catchError((error) => of(null)));
+  };
+
+  getCast = (id: string) => {
+    return this.http
+      .get<CreditsResponse>(`${this.baseUrl}/movie/${id}/credits`, {
+        params: this.params,
+      })
+      .pipe(
+        map((resp) => resp.cast),
+        catchError((error) => of([]))
+      );
   };
 }

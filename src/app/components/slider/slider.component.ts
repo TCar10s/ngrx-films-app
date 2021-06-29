@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { Film } from '../../interfaces/billboard-response';
 import Swiper from 'swiper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-slider',
@@ -9,11 +10,11 @@ import Swiper from 'swiper';
 })
 export class SliderComponent implements OnInit, AfterViewInit {
   @Input() films: Film[];
-  public route: string;
+  public routeFilm: string;
   public swiper: Swiper;
 
-  constructor() {
-    this.route = 'https://image.tmdb.org/t/p/original';
+  constructor(private route: Router) {
+    this.routeFilm = 'https://image.tmdb.org/t/p/original';
   }
 
   ngAfterViewInit(): void {
@@ -26,11 +27,15 @@ export class SliderComponent implements OnInit, AfterViewInit {
     console.log(this.films);
   }
 
-  onSlideNext() {
+  onSlideNext = () => {
     this.swiper.slideNext();
-  }
+  };
 
-  onSlidePrev() {
+  onSlidePrev = () => {
     this.swiper.slidePrev();
-  }
+  };
+
+  navigateFilm = (film: Film) => {
+    this.route.navigate(['/film', film.id]);
+  };
 }

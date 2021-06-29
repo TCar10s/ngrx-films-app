@@ -15,6 +15,8 @@ import { AppRoutingModule } from './app.routes';
 import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 
+// Primeng
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,6 +28,7 @@ import { PagesModule } from './pages/pages.module';
     AppRoutingModule,
     ComponentsModule,
     PagesModule,
+    ScrollPanelModule
   ],
   providers: [],
   bootstrap: [AppComponent],

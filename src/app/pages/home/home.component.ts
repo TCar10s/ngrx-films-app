@@ -5,13 +5,12 @@ import { Film } from '../../interfaces/billboard-response';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   public films: Film[];
   public filmsSlider: Film[];
   public loader: boolean;
-  public properties: any;
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     this.getMoreFilms();
@@ -20,24 +19,19 @@ export class HomeComponent implements OnInit {
   constructor(private filmServices: FilmsService) {
     this.films = [];
     this.loader = true;
-    this.properties = {};
   }
 
   ngOnInit(): void {
-    this.properties = {
-      'border-radius': '5px',
-      height: '450px',
-      'background-color': '#1F2D40',
-    };
-
-    this.filmServices.getBillboard().subscribe((resp) => {
-      setTimeout(() => {
-        this.films = resp;
-        this.filmsSlider = resp;
-        this.loader = false;
-      }, 1000);
-    });
+    this.getFilms();
   }
+
+  getFilms = () => {
+    this.filmServices.getBillboard().subscribe((resp) => {
+      this.films = resp;
+      this.filmsSlider = resp;
+      this.loader = false;
+    });
+  };
 
   getMoreFilms = () => {
     const pos =

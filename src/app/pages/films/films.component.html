@@ -1,36 +1,35 @@
-<div class="p-grid p-mt-5" *ngIf="film">
-  <div class="p-col-6 p-lg-4 p-md-6">
-
+<div class="p-mt-5" *ngIf="film">
+  <div class="flex">
     <img
-      class="p-shadow-5 poster"
+      class="p-shadow-5 poster p-mb-2"
       [src]="film.poster_path | poster"
       [alt]="film.title"
     />
 
-  </div>
-  <div class="p-col-6">
-    <h1 class="p-text-normal">{{ film.title }}</h1>
+    <div class="p-mb-5">
+      <h1 class="p-text-normal p-mt-3">{{ film.title }}</h1>
 
-    <div class="p-d-flex p-ai-center">
-      <star-rating
-        [value]="film.vote_average * 0.5"
-        totalstars="5"
-        checkedcolor="yellow"
-        uncheckedcolor="grey"
-        size="20px"
-        readonly="false"
-      ></star-rating>
-      <p class="p-ml-2">{{ film.vote_average * 0.5 | number: "1.1-2" }}</p>
-    </div>
+      <div class="p-d-flex p-ai-center">
+        <star-rating
+          [value]="film.vote_average * 0.5"
+          totalstars="5"
+          checkedcolor="yellow"
+          uncheckedcolor="grey"
+          size="20px"
+          readonly="false"
+        ></star-rating>
+        <p class="p-ml-2">{{ film.vote_average * 0.5 | number: "1.1-2" }}</p>
+      </div>
 
-    <p class="overview">{{ film.overview }}</p>
+      <p class="overview p-mb-5">{{ film.overview }}</p>
 
-    <p-button 
-        label="Volver" 
-        icon="pi pi-arrow-left" 
+      <p-button
+        label="Volver"
+        icon="pi pi-arrow-left"
         styleClass="p-button"
         (click)="backPage()"
-    >
-    </p-button>
+      >
+      </p-button>
+    </div>
   </div>
 </div>

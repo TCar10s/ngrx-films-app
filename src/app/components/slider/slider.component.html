@@ -25,16 +25,15 @@
       class="swiper-slide"
       [ngStyle]="{
         'background-size': 'cover',
-        'background-image': 'url(' + route + film.backdrop_path + ')',
+        'background-image': 'url(' + routeFilm + film.backdrop_path + ')',
         'background-repeat': 'no-repeat',
         'background-position': 'center'
       }"
+      (click)="navigateFilm(film)"
     >
       <div class="film-description">
-        <h2>{{ film.title }}</h2>
-        <p>
-          {{ film.overview | slice: 0:130 }}...
-        </p>
+        <h2 class="text-white">{{ film.title }}</h2>
+        <p class="text-white">{{ film.overview | slice: 0:150 }}...</p>
       </div>
     </div>
   </div>

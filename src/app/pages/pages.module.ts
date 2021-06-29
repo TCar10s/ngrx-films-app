@@ -6,6 +6,7 @@ import { ComponentsModule } from '../components/components.module';
 import { DividerModule } from 'primeng/divider';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ButtonModule } from 'primeng/button';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
@@ -28,6 +29,7 @@ import { RatingModule } from 'ng-starrating';
     PipesModule,
     RatingModule,
     ButtonModule,
+    ScrollTopModule,
   ],
 })
 export class PagesModule {}

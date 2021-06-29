@@ -5,12 +5,15 @@
     </a>
   </ng-template>
   <ng-template pTemplate="end">
-    <input
-      #textSerch
-      type="text"
-      pInputText
-      placeholder="Buscar película"
-      (keyup.enter)="searchFilm(textSerch.value)"
-    />
+    <span class="p-input-icon-right">
+      <i class="pi pi-search" (click)="searchFilm(textSerch.value)"></i>
+      <input
+        #textSerch
+        type="text"
+        pInputText
+        placeholder="Buscar película"
+        (keyup.enter)="searchFilm(textSerch.value)"
+      />
+    </span>
   </ng-template>
 </p-menubar>
