@@ -4,7 +4,7 @@ import { Observable, of } from 'rxjs';
 import { tap, map, catchError } from 'rxjs/operators';
 import { BillboardResponse, Film } from '../interfaces/billboard-response';
 import { FilmDetails } from '../interfaces/film-details';
-import { CreditsResponse } from '../interfaces/credits-response';
+import { CreditsResponse, Cast } from '../interfaces/credits-response';
 
 /*
   - El operador tab de los rxjs/opetaros, ejecuta cierto código
@@ -73,7 +73,7 @@ export class FilmsService {
       .pipe(catchError((error) => of(null)));
   };
 
-  getCast = (id: string) => {
+  getCast = (id: string):Observable<Cast[]> => {
     return this.http
       .get<CreditsResponse>(`${this.baseUrl}/movie/${id}/credits`, {
         params: this.params,

@@ -6,7 +6,7 @@
       [alt]="film.title"
     />
 
-    <div class="p-mb-5">
+    <div class="p-mb-2">
       <h1 class="p-text-normal p-mt-3">{{ film.title }}</h1>
 
       <div class="p-d-flex p-ai-center">
@@ -21,7 +21,7 @@
         <p class="p-ml-2">{{ film.vote_average * 0.5 | number: "1.1-2" }}</p>
       </div>
 
-      <p class="overview p-mb-5">{{ film.overview }}</p>
+      <p class="overview">{{ film.overview }}</p>
 
       <p-button
         label="Volver"
@@ -30,6 +30,11 @@
         (click)="backPage()"
       >
       </p-button>
+      
     </div>
   </div>
+</div>
+
+<div class="p-mt-5 p-mb-5" *ngIf="cast.length > 0">
+  <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
 </div>

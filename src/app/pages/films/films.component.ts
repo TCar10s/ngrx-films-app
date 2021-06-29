@@ -18,7 +18,9 @@ export class FilmsComponent implements OnInit, OnDestroy {
     private filmService: FilmsService,
     private location: Location,
     private router: Router
-  ) {}
+  ) {
+    this.cast = [];
+  }
 
   ngOnInit(): void {
     const { id } = this.activatedRoute.snapshot.params;
@@ -30,7 +32,7 @@ export class FilmsComponent implements OnInit, OnDestroy {
     });
 
     this.filmService.getCast(id).subscribe((cast) => {
-      this.cast = cast;
+      this.cast = cast.filter((actor) => actor.profile_path);
     });
   }
 
