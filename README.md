@@ -10,7 +10,7 @@
 
 ## Overview
 
-![screenshot](https://raw.githubusercontent.com/TCar10s/webpack-starter/main/src/assets/webpack-initial.jpeg)
+![screenshot](https://raw.githubusercontent.com/TCar10s/ng-films-app/main/src/assets/img/screenshot-desktop.jpeg)
 
 ## Notas
 
