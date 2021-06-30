@@ -2,7 +2,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://tcar10s.github.io/webpack-starter/">
+    <a href="https://films-app-ng.netlify.app/home" target="_blank">
       Demo
     </a>
   </h3>
@@ -10,7 +10,7 @@
 
 ## Overview
 
-![screenshot](https://raw.githubusercontent.com/TCar10s/webpack-starter/main/src/assets/webpack-initial.jpeg)
+![screenshot](https://raw.githubusercontent.com/TCar10s/ng-films-app/main/src/assets/img/screenshot-desktop.jpeg)
 
 ## Notas
 
