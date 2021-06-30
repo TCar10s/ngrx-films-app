@@ -7,7 +7,7 @@ import { DividerModule } from 'primeng/divider';
 import { SkeletonModule } from 'primeng/skeleton';
 import { ButtonModule } from 'primeng/button';
 import { ScrollTopModule } from 'primeng/scrolltop';
-import {TabViewModule} from 'primeng/tabview';
+import { TabViewModule } from 'primeng/tabview';
 
 // Pipes
 import { PipesModule } from '../pipes/pipes.module';
@@ -21,6 +21,7 @@ import { SearchComponent } from './search/search.component';
 import { RatingModule } from 'ng-starrating';
 import { TopRatedComponent } from './top-rated/top-rated.component';
 import { UpcomingComponent } from './upcoming/upcoming.component';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { UpcomingComponent } from './upcoming/upcoming.component';
     RatingModule,
     ButtonModule,
     ScrollTopModule,
-    TabViewModule
+    TabViewModule,
+    YouTubePlayerModule,
   ],
 })
 export class PagesModule {}

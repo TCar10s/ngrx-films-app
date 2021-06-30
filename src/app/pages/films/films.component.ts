@@ -1,9 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+  OnDestroy,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FilmDetails } from 'src/app/interfaces/film-details';
 import { FilmsService } from 'src/app/services/films.service';
 import { Location } from '@angular/common';
-import { OnDestroy } from '@angular/core';
 import { Cast } from '../../interfaces/credits-response';
 import { combineLatest } from 'rxjs';
 
@@ -18,14 +25,20 @@ import { combineLatest } from 'rxjs';
   templateUrl: './films.component.html',
   styleUrls: ['./films.component.css'],
 })
-export class FilmsComponent implements OnInit, OnDestroy {
+export class FilmsComponent implements OnInit, AfterViewInit, OnDestroy {
   public film: FilmDetails;
   public cast: Cast[];
+
+  @ViewChild('demoYouTubePlayer') demoYouTubePlayer: ElementRef<HTMLDivElement>;
+  videoWidth: number | undefined;
+  videoHeight: number | undefined;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private filmService: FilmsService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private _changeDetectorRef: ChangeDetectorRef
   ) {
     this.cast = [];
   }
@@ -41,14 +54,29 @@ export class FilmsComponent implements OnInit, OnDestroy {
       this.film = film;
       this.cast = cast.filter((actor) => actor.profile_path);
     });
-
   }
+
+  ngAfterViewInit(): void {
+    this.onResize();
+    window.addEventListener('resize', this.onResize);
+  }
+
+  onResize = (): void => {
+    // Automatically expand the video to fit the page up to 1200px x 720px
+    this.videoWidth = Math.min(
+      this.demoYouTubePlayer.nativeElement.clientWidth,
+      1200
+    );
+    this.videoHeight = this.videoWidth * 0.6;
+    this._changeDetectorRef.detectChanges();
+  };
 
   backPage = () => {
     this.location.back();
   };
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.filmService.resetBillboardPage();
+    window.removeEventListener('resize', this.onResize);
   }
 }

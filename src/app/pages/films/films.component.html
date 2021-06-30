@@ -40,14 +40,26 @@
         </div>
       </p-tabPanel>
 
-      <p-tabPanel header="Casting" leftIcon="pi pi-users" *ngIf="cast.length > 0">
+      <p-tabPanel
+        header="Casting"
+        leftIcon="pi pi-users"
+        *ngIf="cast.length > 0"
+      >
         <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
       </p-tabPanel>
 
       <p-tabPanel header="Trailer" leftIcon="pi pi-youtube">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea porro
-        impedit perspiciatis sequi eum molestiae dignissimos officiis veniam
-        natus?
+
+        <div #demoYouTubePlayer class="demo-youtube-player">
+          <section>
+            <youtube-player
+              videoId="RSGQuH_gWNw"
+              width="100%"
+              [height]="videoHeight"
+            ></youtube-player>
+          </section>
+        </div>
+
       </p-tabPanel>
     </p-tabView>
   </div>
