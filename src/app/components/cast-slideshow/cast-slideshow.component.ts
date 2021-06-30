@@ -9,22 +9,19 @@ import { Cast } from '../../interfaces/credits-response';
 })
 export class CastSlideshowComponent implements OnInit, AfterViewInit {
   @Input() cast: Cast[];
-  public loader: boolean;
-  constructor() {
-    this.loader = true;
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.loader = false;
-    }, 500);
-  }
+  ngOnInit(): void {}
 
   ngAfterViewInit() {
     const swiper = new Swiper('.swiper-container', {
-      slidesPerView: 4.3,
+      slidesPerView: 5.3,
       freeMode: true,
       spaceBetween: 15,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
     });
   }
 }

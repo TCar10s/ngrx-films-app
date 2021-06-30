@@ -23,3 +23,7 @@ body {
     padding: 20px 90px !important;
   }
 }
+
+.p-tabview-panels {
+  background-color: #121212 !important;
+}

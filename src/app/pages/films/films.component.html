@@ -1,39 +1,54 @@
-<div class="p-mt-5 animate__animated animate__fadeIn animate__faster" *ngIf="film">
-  <div class="flex">
+<div
+  class="p-mt-5 animate__animated animate__fadeIn animate__faster"
+  *ngIf="film"
+>
+  <div class="grid">
     <img
-      class="p-shadow-5 poster p-mb-2"
+      class="p-shadow-5 poster p-mb-4"
       [src]="film.poster_path | poster"
       [alt]="film.title"
     />
 
-    <div class="p-mb-2">
-      <h1 class="p-text-normal">{{ film.title }}</h1>
+    <p-tabView>
+      <p-tabPanel header="Información" leftIcon="pi pi-info-circle">
+        <div class="p-mb-2">
+          <h1 class="p-text-normal">{{ film.title }}</h1>
 
-      <div class="p-d-flex p-ai-center">
-        <star-rating
-          [value]="film.vote_average * 0.5"
-          totalstars="5"
-          checkedcolor="yellow"
-          uncheckedcolor="grey"
-          size="20px"
-          readonly="false"
-        ></star-rating>
-        <p class="p-ml-2">{{ film.vote_average * 0.5 | number: "1.1-2" }}</p>
-      </div>
+          <div class="p-d-flex p-ai-center">
+            <star-rating
+              [value]="film.vote_average * 0.5"
+              totalstars="5"
+              checkedcolor="yellow"
+              uncheckedcolor="grey"
+              size="20px"
+              readonly="false"
+            ></star-rating>
+            <p class="p-ml-2">
+              {{ film.vote_average * 0.5 | number: "1.1-2" }}
+            </p>
+          </div>
 
-      <p class="overview">{{ film.overview }}</p>
+          <p class="overview p-mb-5">{{ film.overview }}</p>
 
-      <div class="p-md-6 p-lg-6 p-mb-4" *ngIf="cast.length > 0">
+          <p-button
+            label="Volver"
+            icon="pi pi-arrow-left"
+            styleClass="p-button"
+            (click)="backPage()"
+          >
+          </p-button>
+        </div>
+      </p-tabPanel>
+
+      <p-tabPanel header="Casting" leftIcon="pi pi-users" *ngIf="cast.length > 0">
         <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
-      </div>
+      </p-tabPanel>
 
-      <p-button
-        label="Volver"
-        icon="pi pi-arrow-left"
-        styleClass="p-button"
-        (click)="backPage()"
-      >
-      </p-button>
-    </div>
+      <p-tabPanel header="Trailer" leftIcon="pi pi-youtube">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam ea porro
+        impedit perspiciatis sequi eum molestiae dignissimos officiis veniam
+        natus?
+      </p-tabPanel>
+    </p-tabView>
   </div>
 </div>

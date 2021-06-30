@@ -42,16 +42,6 @@ export class FilmsComponent implements OnInit, OnDestroy {
       this.cast = cast.filter((actor) => actor.profile_path);
     });
 
-    // this.filmService.getFilmsDetails(id).subscribe((film) => {
-    //   if (!film) {
-    //     return this.router.navigateByUrl('/home');
-    //   }
-    //   this.film = film;
-    // });
-
-    // this.filmService.getCast(id).subscribe((cast) => {
-    //   this.cast = cast.filter((actor) => actor.profile_path);
-    // });
   }
 
   backPage = () => {
