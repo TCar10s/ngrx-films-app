@@ -1,27 +1,33 @@
 # FilmsApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
+<div align="center">
+  <h3>
+    <a href="https://tcar10s.github.io/webpack-starter/">
+      Demo
+    </a>
+  </h3>
+</div>
 
-## Development server
+## Overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+![screenshot](https://raw.githubusercontent.com/TCar10s/webpack-starter/main/src/assets/webpack-initial.jpeg)
 
-## Code scaffolding
+## Notas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Recuerden reconstruir los módulos de Node.
 
-## Build
+```
+npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Ejecute `ng serve` para un servidor de desarrollo. Vaya a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambia alguno de los archivos de origen.
 
-## Running unit tests
+```
+ng serve
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Contact
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Website [www.tutoscarlos.xyz](https://www.tutoscarlos.xyz)
+- GitHub [@TCar10s](https://https://github.com/TCar10s)
+- Twitter [@Tutos_Carlos11](https://twitter.com/Tutos_Carlos11)
