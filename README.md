@@ -2,7 +2,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://films-app-ng.netlify.app/home">
+    <a href="https://films-app-ng.netlify.app/home" about="_blank">
       Demo
     </a>
   </h3>
