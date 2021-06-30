@@ -19,11 +19,13 @@ import { CreditsResponse, Cast } from '../interfaces/credits-response';
 export class FilmsService {
   private baseUrl: string;
   private billboardPage: number;
+  private filmByCategorie: number;
   public loading: boolean;
 
   constructor(private http: HttpClient) {
     this.baseUrl = 'https://api.themoviedb.org/3';
     this.billboardPage = 1;
+    this.filmByCategorie = 1;
     this.loading = false;
   }
 
@@ -37,6 +39,7 @@ export class FilmsService {
 
   resetBillboardPage = () => {
     this.billboardPage = 1;
+    this.filmByCategorie = 1;
   };
 
   getBillboard = (): Observable<Film[]> => {
@@ -85,13 +88,19 @@ export class FilmsService {
   };
 
   getByCategory = (categorie: string): Observable<Film[]> => {
-    const params = { ...this.params, page: '1' };
+    if (this.loading) return of([]); // Cargando películas
+    this.loading = true;
+    const params = { ...this.params, page: this.filmByCategorie.toString() };
     return this.http
       .get<BillboardResponse>(`${this.baseUrl}/movie/${categorie}`, {
         params,
       })
       .pipe(
         map((resp) => resp.results),
+        tap(() => {
+          this.filmByCategorie++;
+          this.loading = false;
+        }),
         catchError((error) => of([]))
       );
   };
