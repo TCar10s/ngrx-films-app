@@ -2,7 +2,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://tcar10s.github.io/webpack-starter/">
+    <a href="https://films-app-ng.netlify.app/home">
       Demo
     </a>
   </h3>
