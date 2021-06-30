@@ -6,6 +6,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { FilmsComponent } from './pages/films/films.component';
+import { TopRatedComponent } from './pages/top-rated/top-rated.component';
+import { UpcomingComponent } from './pages/upcoming/upcoming.component';
 
 const ROUTES: Routes = [
   {
@@ -19,6 +21,14 @@ const ROUTES: Routes = [
   {
     path: 'search/:text',
     component: SearchComponent,
+  },
+  {
+    path: 'top-rated',
+    component: TopRatedComponent,
+  },
+  {
+    path: 'upcoming',
+    component: UpcomingComponent,
   },
   {
     path: '**',

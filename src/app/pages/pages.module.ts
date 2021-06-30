@@ -18,9 +18,17 @@ import { SearchComponent } from './search/search.component';
 
 // Others
 import { RatingModule } from 'ng-starrating';
+import { TopRatedComponent } from './top-rated/top-rated.component';
+import { UpcomingComponent } from './upcoming/upcoming.component';
 
 @NgModule({
-  declarations: [HomeComponent, FilmsComponent, SearchComponent],
+  declarations: [
+    HomeComponent,
+    FilmsComponent,
+    SearchComponent,
+    TopRatedComponent,
+    UpcomingComponent,
+  ],
   imports: [
     CommonModule,
     ComponentsModule,

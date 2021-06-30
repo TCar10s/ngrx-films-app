@@ -73,13 +73,25 @@ export class FilmsService {
       .pipe(catchError((error) => of(null)));
   };
 
-  getCast = (id: string):Observable<Cast[]> => {
+  getCast = (id: string): Observable<Cast[]> => {
     return this.http
       .get<CreditsResponse>(`${this.baseUrl}/movie/${id}/credits`, {
         params: this.params,
       })
       .pipe(
         map((resp) => resp.cast),
+        catchError((error) => of([]))
+      );
+  };
+
+  getByCategory = (categorie: string): Observable<Film[]> => {
+    const params = { ...this.params, page: '1' };
+    return this.http
+      .get<BillboardResponse>(`${this.baseUrl}/movie/${categorie}`, {
+        params,
+      })
+      .pipe(
+        map((resp) => resp.results),
         catchError((error) => of([]))
       );
   };

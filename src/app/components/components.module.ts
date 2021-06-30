@@ -30,7 +30,7 @@ import { CastSlideshowComponent } from './cast-slideshow/cast-slideshow.componen
     NavbarComponent,
     SliderComponent,
     FilmsPosterGridComponent,
-    CastSlideshowComponent,
+    CastSlideshowComponent
   ],
   imports: [
     CommonModule,
