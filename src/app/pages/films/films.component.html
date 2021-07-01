@@ -40,25 +40,26 @@
         </div>
       </p-tabPanel>
 
-      <p-tabPanel
-        header="Casting"
-        leftIcon="pi pi-users"
-        *ngIf="cast.length > 0"
-      >
-        <div style="width: 100%">
-          <app-cast-slideshow [cast]="cast"></app-cast-slideshow>
+      <p-tabPanel header="Casting" leftIcon="pi pi-users">
+        <div class="grid-cast">
+          <div *ngFor="let actor of cast">
+            <img
+              class="img-cast p-shadow-3"
+              [src]="actor.profile_path | poster"
+              [alt]="actor.name"
+            />
+            <p style="margin:0">{{ actor.name }}</p>
+          </div>
         </div>
       </p-tabPanel>
 
       <p-tabPanel header="Trailer" leftIcon="pi pi-youtube">
         <div #demoYouTubePlayer class="demo-youtube-player">
-          <section>
-            <youtube-player
-              [videoId]="trailer.key"
-              width="100%"
-              [height]="videoHeight"
-            ></youtube-player>
-          </section>
+          <youtube-player
+            [videoId]="trailer.key"
+            width="100%"
+            [height]="videoHeight"
+          ></youtube-player>
         </div>
       </p-tabPanel>
     </p-tabView>

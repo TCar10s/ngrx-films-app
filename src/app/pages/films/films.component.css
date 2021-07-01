@@ -28,3 +28,14 @@ h1 {
     grid-template-columns: 35% 65%;
   }
 }
+
+.grid-cast {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  gap: 20px;
+}
+
+.img-cast {
+  border-radius: 5px;
+  width: 100%;
+}

@@ -54,10 +54,9 @@ export class FilmsComponent implements OnInit, AfterViewInit, OnDestroy {
       this.filmService.getTrailer(id)
     ]).subscribe(([film, cast, trailer]) => {
       if (!film) return this.router.navigateByUrl('/home');
-      this.film = film;
       this.cast = cast.filter((actor) => actor.profile_path);
+      this.film = film;
       this.trailer = trailer[0];
-      console.log(this.trailer.key)
     });
   }
 
