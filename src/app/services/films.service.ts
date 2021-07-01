@@ -5,6 +5,7 @@ import { tap, map, catchError } from 'rxjs/operators';
 import { BillboardResponse, Film } from '../interfaces/billboard-response';
 import { FilmDetails } from '../interfaces/film-details';
 import { CreditsResponse, Cast } from '../interfaces/credits-response';
+import { Trailer, TrailerResponse } from '../interfaces/trailer-response';
 
 /*
   - El operador tab de los rxjs/opetaros, ejecuta cierto código
@@ -101,6 +102,19 @@ export class FilmsService {
           this.filmByCategorie++;
           this.loading = false;
         }),
+        catchError((error) => of([]))
+      );
+  };
+
+  getTrailer = (id: string): Observable<Trailer[]> => {
+    const params = { ...this.params, language: 'en-US' };
+
+    return this.http
+      .get<TrailerResponse>(`${this.baseUrl}/movie/${id}/videos`, {
+        params,
+      })
+      .pipe(
+        map((resp) => resp.results),
         catchError((error) => of([]))
       );
   };

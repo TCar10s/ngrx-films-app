@@ -13,6 +13,7 @@ import { FilmsService } from 'src/app/services/films.service';
 import { Location } from '@angular/common';
 import { Cast } from '../../interfaces/credits-response';
 import { combineLatest } from 'rxjs';
+import { Trailer } from '../../interfaces/trailer-response';
 
 /*
   El combineLatest recibe una cantidad x de observables y regresa
@@ -28,6 +29,7 @@ import { combineLatest } from 'rxjs';
 export class FilmsComponent implements OnInit, AfterViewInit, OnDestroy {
   public film: FilmDetails;
   public cast: Cast[];
+  public trailer: Trailer;
 
   @ViewChild('demoYouTubePlayer') demoYouTubePlayer: ElementRef<HTMLDivElement>;
   videoWidth: number | undefined;
@@ -49,10 +51,13 @@ export class FilmsComponent implements OnInit, AfterViewInit, OnDestroy {
     combineLatest([
       this.filmService.getFilmsDetails(id),
       this.filmService.getCast(id),
-    ]).subscribe(([film, cast]) => {
+      this.filmService.getTrailer(id)
+    ]).subscribe(([film, cast, trailer]) => {
       if (!film) return this.router.navigateByUrl('/home');
       this.film = film;
       this.cast = cast.filter((actor) => actor.profile_path);
+      this.trailer = trailer[0];
+      console.log(this.trailer.key)
     });
   }
 
