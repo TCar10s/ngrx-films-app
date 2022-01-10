@@ -68,7 +68,7 @@ export class FilmsComponent implements OnInit, AfterViewInit, OnDestroy {
   onResize = (): void => {
     // Automatically expand the video to fit the page up to 1200px x 720px
     this.videoWidth = Math.min(
-      this.demoYouTubePlayer.nativeElement.clientWidth,
+      this.demoYouTubePlayer?.nativeElement?.clientWidth,
       1200
     );
     this.videoHeight = this.videoWidth * 0.6;

@@ -3,11 +3,19 @@
   *ngIf="film"
 >
   <div class="grid">
-    <img
-      class="p-shadow-5 poster p-mb-4"
-      [src]="film.poster_path | poster"
-      [alt]="film.title"
-    />
+    <div class="p-mb-4">
+      <img
+        class="p-shadow-5 poster p-mb-4"
+        [src]="film.poster_path | poster"
+        [alt]="film.title"
+      />
+      <p-button
+        label="Volver"
+        icon="pi pi-arrow-left"
+        styleClass="p-button"
+        (click)="backPage()"
+      ></p-button>
+    </div>
 
     <p-tabView>
       <p-tabPanel header="Información" leftIcon="pi pi-info-circle">
@@ -29,14 +37,6 @@
           </div>
 
           <p class="overview p-mb-5">{{ film.overview }}</p>
-
-          <p-button
-            label="Volver"
-            icon="pi pi-arrow-left"
-            styleClass="p-button"
-            (click)="backPage()"
-          >
-          </p-button>
         </div>
       </p-tabPanel>
 
@@ -58,16 +58,18 @@
       <p-tabPanel header="Trailer" leftIcon="pi pi-youtube">
         <div
           #demoYouTubePlayer
-          class="
-            demo-youtube-player
-            animate__animated animate__fadeIn animate__faster
-          "
+          class="demo-youtube-player animate__animated animate__fadeIn animate__faster"
         >
           <youtube-player
-            [videoId]="trailer.key"
+            *ngIf="trailer"
+            [videoId]="trailer?.key"
             width="100%"
             [height]="videoHeight"
           ></youtube-player>
+
+          <ng-template [ngIf]="!trailer">
+            <p>Trailer not available</p>
+          </ng-template>
         </div>
       </p-tabPanel>
     </p-tabView>
