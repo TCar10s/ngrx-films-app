@@ -23,9 +23,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngOnInit(): void {
-    console.log(this.films);
-  }
+  ngOnInit(): void { }
 
   onSlideNext = () => {
     this.swiper.slideNext();
