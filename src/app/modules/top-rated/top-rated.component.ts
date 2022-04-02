@@ -1,7 +1,10 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Film } from 'src/app/interfaces/billboard-response';
-import { FilmsService } from 'src/app/services/films.service';
+import { Film } from 'src/app/core/interfaces/billboard-response';
+import { FilmsService } from 'src/app/core/services/films.service';
+import { TopRatedService } from './services/top-rated.service';
+import { UtilitiesService } from '../../core/services/utilities.service';
+
 
 @Component({
   selector: 'app-top-rated',
@@ -10,29 +13,48 @@ import { FilmsService } from 'src/app/services/films.service';
 })
 export class TopRatedComponent implements OnInit {
   public films$!: Observable<Film[]>;
+
   @HostListener('window:scroll', ['$event'])
-  onScroll() {
+  onScroll(): void {
     this.getMoreFilms();
   }
 
-  constructor(private filmService: FilmsService) {}
+  constructor(
+    private filmService: FilmsService,
+    private utilitiesService: UtilitiesService,
+    public topRatedService: TopRatedService
+  ) {
+  }
 
   ngOnInit(): void {
-    this.getTopRatedFilms();
+    this.validateRatedFilmsStatus();
+  }
+
+  validateRatedFilmsStatus(): void {
+    const films = this.topRatedService.getTopRatedFilms();
+
+    if (films.length === 0) {
+      this.getTopRatedFilms();
+    }
   }
 
   getTopRatedFilms = () => {
-    this.films$ = this.filmService.getByCategory('top_rated');
-  };
+    this.filmService.getByCategory('top_rated').subscribe(films => {
+      this.topRatedService.setTopRatedFilms(films); // BehaviorSubject
+    });
+  }
 
   getMoreFilms = () => {
-    const pos = document.documentElement.scrollTop + 1000;
-    const max = document.documentElement.scrollHeight;
+    const positionScroll = this.utilitiesService.calcularPositionScroll();
+    const {loadingMoreFilms} = this.filmService;
 
-    if (pos > max) {
-      // TODO: llamar el servicio
-      if (this.filmService.loading) return;
-      this.getTopRatedFilms();
+    if (!positionScroll) {
+      return;
     }
-  };
+    if (loadingMoreFilms) {
+      return;
+    }
+
+    this.getTopRatedFilms();
+  }
 }

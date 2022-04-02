@@ -11,9 +11,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FilmDetails } from 'src/app/core/interfaces/film-details';
 import { FilmsService } from 'src/app/core/services/films.service';
 import { Location } from '@angular/common';
-import { Cast } from '../../../../core/interfaces/credits-response';
+import { Cast } from '../../core/interfaces/credits-response';
 import { combineLatest } from 'rxjs';
-import { Trailer } from '../../../../core/interfaces/trailer-response';
+import { Trailer } from '../../core/interfaces/trailer-response';
 
 /*
   El combineLatest recibe una cantidad x de observables y regresa
@@ -75,8 +75,8 @@ export class FilmsComponent implements OnInit, AfterViewInit, OnDestroy {
     this.changeDetectorRef.detectChanges();
   }
 
-  backPage = () => {
-    this.location.back();
+  backPage = (): void => {
+    this.router.navigateByUrl('/home');
   }
 
   ngOnDestroy(): void {

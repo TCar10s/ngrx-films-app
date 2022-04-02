@@ -19,15 +19,17 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class FilmsService {
-  private filmByCategorie: number;
-  public loading: boolean;
+  private filmByCategory: number;
+  public loadingMoreFilms: boolean;
+  private billboardPage: number;
 
   private films: BehaviorSubject<Film[]> = new BehaviorSubject<Film[]>([]);
   public films$ = this.films.asObservable();
 
   constructor(private http: HttpClient) {
-    this.filmByCategorie = 1;
-    this.loading = false;
+    this.filmByCategory = 1;
+    this.billboardPage = 1;
+    this.loadingMoreFilms = false;
   }
 
   public setFilms(films: Film[]): void {
@@ -42,13 +44,13 @@ export class FilmsService {
     return {
       api_key: environment.APIKEY,
       language: 'es-ES',
-      page: '1',
+      page: this.billboardPage.toString(),
     };
   }
 
   getBillboard = (): Observable<Film[]> => {
-    if (this.loading) { return of([]); } // Cargando películas
-    this.loading = true;
+    if (this.loadingMoreFilms) { return of([]); } // Cargando películas
+    this.loadingMoreFilms = true;
     return this.http
       .get<BillboardResponse>(`${environment.APIURL}/movie/now_playing?`, {
         params: this.params,
@@ -56,10 +58,11 @@ export class FilmsService {
       .pipe(
         map((resp) => resp.results),
         tap(() => {
-          this.loading = false;
+          this.billboardPage++;
+          this.loadingMoreFilms = false;
         })
       );
-  };
+  }
 
   searchFilms = (text: string): Observable<Film[]> => {
     const params = { ...this.params, page: '1', query: text };
@@ -69,7 +72,7 @@ export class FilmsService {
         params,
       })
       .pipe(map((resp) => resp.results));
-  };
+  }
 
   getFilmsDetails = (id: string) => {
     return this.http
@@ -90,19 +93,19 @@ export class FilmsService {
       );
   }
 
-  getByCategory = (categorie: string): Observable<Film[]> => {
-    if (this.loading) { return of([]); } // Cargando películas
-    this.loading = true;
-    const params = { ...this.params, page: this.filmByCategorie.toString() };
+  getByCategory = (category: string): Observable<Film[]> => {
+    if (this.loadingMoreFilms) { return of([]); } // Cargando películas
+    this.loadingMoreFilms = true;
+    const params = { ...this.params, page: this.filmByCategory.toString() };
     return this.http
-      .get<BillboardResponse>(`${environment.APIURL}/movie/${categorie}`, {
+      .get<BillboardResponse>(`${environment.APIURL}/movie/${category}`, {
         params,
       })
       .pipe(
         map((resp) => resp.results),
         tap(() => {
-          this.filmByCategorie++;
-          this.loading = false;
+          this.filmByCategory++;
+          this.loadingMoreFilms = false;
         }),
         catchError((error) => of([]))
       );

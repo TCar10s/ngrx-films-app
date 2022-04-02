@@ -1,20 +1,23 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Film } from 'src/app/interfaces/billboard-response';
-import { FilmsService } from 'src/app/services/films.service';
+import { Film } from 'src/app/core/interfaces/billboard-response';
+import { FilmsService } from 'src/app/core/services/films.service';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
+
   /*
-    Obtenemos el valor del url mediante un Observable ya que cuando
-    nos encontremos en este vista el valor puiede cambiar.
+    Obtenemos el valor del url mediante un Observable, ya que cuando
+    nos encontremos en este vista el valor puede cambiar.
   */
+
   public films$!: Observable<Film[]>;
   public textSearch: string;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private filmService: FilmsService
@@ -31,5 +34,5 @@ export class SearchComponent implements OnInit {
 
   searchMovie = (text: string) => {
     this.films$ = this.filmService.searchFilms(text);
-  };
+  }
 }

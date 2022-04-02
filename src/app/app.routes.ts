@@ -2,33 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
-// Components
-import { HomeComponent } from './pages/home/home.component';
-import { SearchComponent } from './pages/search/search.component';
-import { FilmsComponent } from './pages/films/films.component';
-import { TopRatedComponent } from './pages/top-rated/top-rated.component';
-import { UpcomingComponent } from './pages/upcoming/upcoming.component';
-
 const ROUTES: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   {
     path: 'home',
-    component: HomeComponent,
+    loadChildren: () => import('./modules/home/home.module').then(m => m.HomeModule)
   },
   {
-    path: 'film/:id',
-    component: FilmsComponent,
-  },
-  {
-    path: 'search/:text',
-    component: SearchComponent,
+    path: 'search',
+    loadChildren: () => import('./modules/search/search.module').then(m => m.SearchModule)
   },
   {
     path: 'top-rated',
-    component: TopRatedComponent,
+    loadChildren: () => import('./modules/top-rated/top-rated.module').then(m => m.TopRatedModule)
   },
   {
     path: 'upcoming',
-    component: UpcomingComponent,
+    loadChildren: () => import('./modules/upcoming/upcoming.module').then(m => m.UpcomingModule)
+  },
+  {
+    path: 'film',
+    loadChildren: () => import('./modules/film/film.module').then(m => m.FilmModule)
   },
   {
     path: '**',
@@ -39,8 +33,8 @@ const ROUTES: Routes = [
 @NgModule({
   imports: [CommonModule, RouterModule.forRoot(ROUTES)],
   exports: [
-    // Los otros moódulos solo podran tener acceso (ver) estas exportaciones.
     RouterModule,
   ],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

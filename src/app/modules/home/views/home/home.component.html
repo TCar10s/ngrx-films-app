@@ -1,0 +1,14 @@
+<h1>Cartelera</h1>
+
+<div class="p-d-flex p-jc-center">
+  <app-slider></app-slider>
+</div>
+
+<h1 class="p-mt-6">Películas</h1>
+<app-films-poster-grid [films$]="filmService.films$"></app-films-poster-grid>
+
+<p-scrollTop
+  styleClass="custom-scrolltop"
+  [threshold]="100"
+  icon="pi pi-arrow-up"
+></p-scrollTop>

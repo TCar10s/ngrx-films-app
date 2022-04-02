@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Film } from '../../interfaces/billboard-response';
+import { Film } from '../../../../core/interfaces/billboard-response';
 import Swiper from 'swiper';
 import { Router } from '@angular/router';
-import { FilmsService } from 'src/app/services/films.service';
+import { FilmsService } from 'src/app/core/services/films.service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -17,7 +17,7 @@ export class SliderComponent implements OnInit, AfterViewInit {
   public swiper!: Swiper;
 
   constructor(private route: Router, private filmService: FilmsService) {
-    this.routeFilm = 'https://image.tmdb.org/t/p/w500';
+    this.routeFilm = 'https://image.tmdb.org/t/p/original';
   }
 
   ngAfterViewInit(): void {
@@ -37,6 +37,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
   navigateFilm = (film: Film) => {
-    this.route.navigate(['/film', film.id]);
+    this.route.navigate(['home/film', film.id]);
   }
 }

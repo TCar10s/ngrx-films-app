@@ -3,6 +3,7 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
+    "strict": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,
@@ -12,6 +13,12 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
+    "paths": {
+      "@core/*": ["./src/app/core" ],
+      "@modules/*": ["./src/app/modules"],
+      "@shared/*": ["./src/app/shared"],
+      "@environments/*": ["./src/environments/*"]
+    },
     "lib": [
       "es2018",
       "dom"

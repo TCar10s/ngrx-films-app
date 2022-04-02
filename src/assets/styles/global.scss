@@ -1,0 +1,31 @@
+$bgColor: #121212;
+
+body {
+  font-family: "Raleway", sans-serif;
+  background-color: $bgColor;
+  color: #e6e6e6;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.p-menubar {
+  padding: 20px 20px !important;
+  border: none !important;
+  box-shadow: 0 3px 1px -2px rgb(0 0 0 / 20%), 0 2px 2px 0 rgb(0 0 0 / 14%),
+  0 1px 5px 0 rgb(0 0 0 / 12%) !important;
+}
+
+@media (min-width: 769px) {
+  .p-menubar {
+    padding: 20px 90px !important;
+  }
+}
+
+.p-tabview-panels {
+  background-color: $bgColor !important;
+}

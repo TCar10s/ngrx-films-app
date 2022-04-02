@@ -1,0 +1,24 @@
+<div (click)="viewMoreDetails(film)">
+<!--  [src]="film.poster_path | poster"-->
+  <img
+    class="poster p-shadow-5"
+    width="100%"
+    [lazyLoad]="film.poster_path | poster"
+    alt="{{ film.title }}"
+    loading="lazy"
+    src=""/>
+  <h3>{{ film.title }}</h3>
+
+  <div class="p-d-flex p-jc-between">
+    <star-rating
+      [value]="film.vote_average * 0.5"
+      totalstars="5"
+      checkedcolor="yellow"
+      uncheckedcolor="grey"
+      size="14px"
+      readonly="false"
+    ></star-rating>
+
+    <span>{{ voteAverage | number: "1.1-2" }}</span>
+  </div>
+</div>

@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { FilmsService } from 'src/app/services/films.service';
-import { Film } from '../../interfaces/billboard-response';
+import { Film } from '../../core/interfaces/billboard-response';
 
 @Component({
   selector: 'app-films-poster-grid',
@@ -10,18 +9,16 @@ import { Film } from '../../interfaces/billboard-response';
   styleUrls: ['./films-poster-grid.component.css'],
 })
 export class FilmsPosterGridComponent implements OnInit {
-  @Input() films$: Observable<Film[]> = this.filmService.films$;
-  public loader: boolean = true;
+  @Input() films$!: Observable<Film[]>;
+  public loader = true;
 
-  constructor(private route: Router, private filmService: FilmsService) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    setTimeout(() => {
-      this.loader = false;
-    }, 1000);
+    setTimeout(() => this.loader = false, 1000);
   }
 
-  viewMoreDetails = (film: Film) => {
-    this.route.navigate(['/film', film.id]);
-  };
+  viewMoreDetails = (id: number) => {
+    this.router.navigate(['/film', id]);
+  }
 }
