@@ -37,6 +37,6 @@ export class SliderComponent implements OnInit, AfterViewInit {
   }
 
   navigateFilm = (film: Film) => {
-    this.route.navigate(['home/film', film.id]);
+    this.route.navigate(['/film', film.id]);
   }
 }

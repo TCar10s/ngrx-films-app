@@ -76,7 +76,7 @@ export class FilmsComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   backPage = (): void => {
-    this.router.navigateByUrl('/home');
+    this.location.back();
   }
 
   ngOnDestroy(): void {
