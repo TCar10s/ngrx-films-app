@@ -113,7 +113,6 @@
       }
     }
   },
-  "defaultProject": "films-app",
   "cli": {
     "analytics": "b5615ab2-6500-4a0d-973c-2a8397b265a3"
   }
