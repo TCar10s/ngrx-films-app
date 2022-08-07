@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { FilmsService } from '../../../../core/services/films.service';
-import { UtilitiesService } from '../../../../core/services/utilities.service';
+import { FilmsService } from '@core/services/films.service';
+import { UtilitiesService } from '@core/services/utilities.service';
 
 @Component({
   selector: 'app-home',

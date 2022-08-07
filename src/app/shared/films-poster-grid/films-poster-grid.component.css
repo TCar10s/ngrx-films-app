@@ -1,7 +1,17 @@
 .list-films {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
+  max-width: 1200px;
+  padding: 15px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+
+@media (min-width: 769px) {
+  .list-films {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr));
+  }
 }
 
 .poster {

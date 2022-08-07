@@ -6,7 +6,8 @@ import { SkeletonModule } from 'primeng/skeleton';
 import { ScrollTopModule } from 'primeng/scrolltop';
 import { SliderComponent } from './components/slider/slider.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { FilmsPosterGridModule } from '../../shared/films-poster-grid/films-poster-grid.module';
+import { FilmsPosterGridModule } from '@shared/films-poster-grid/films-poster-grid.module';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   declarations: [HomeComponent, SliderComponent],
@@ -16,6 +17,7 @@ import { FilmsPosterGridModule } from '../../shared/films-poster-grid/films-post
     ScrollTopModule,
     HomeRoutingModule,
     FilmsPosterGridModule,
+    SwiperModule
   ],
 })
 export class HomeModule {

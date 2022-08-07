@@ -1,41 +1,7 @@
-.poster {
-  border-radius: 5px;
-  width: 100%;
-}
-
-h1 {
-  padding: 0;
-  margin: 0;
-}
-
 .overview {
   font-size: 16px;
 }
 
-@media (min-width: 576px) {
-  .grid {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    column-gap: 20px;
-  }
-  .poster {
-    width: 100%;
-  }
-}
-
-@media (min-width: 769px) {
-  .grid {
-    grid-template-columns: 35% 65%;
-  }
-}
-
-.grid-cast {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 150px), 1fr));
-  gap: 20px;
-}
-
-.img-cast {
+.poster {
   border-radius: 5px;
-  width: 100%;
 }

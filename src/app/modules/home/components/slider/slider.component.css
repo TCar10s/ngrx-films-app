@@ -1,20 +1,6 @@
 .swiper-container {
-  height: 400px;
+  max-height: 400px;
   width: 100vw;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  color: #fff;
-}
-
-@media (min-width: 798px) {
-  .swiper-slide {
-    background-position: top !important;
-  }
-  .swiper-container {
-    width: calc(100vw - 20px);
-  }
 }
 
 .film-description {

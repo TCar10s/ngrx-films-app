@@ -1,0 +1,15 @@
+<div
+  #demoYouTubePlayer
+  class="demo-youtube-player animate__animated animate__fadeIn animate__faster"
+>
+  <youtube-player
+    *ngIf="trailer"
+    [videoId]="trailer?.key"
+    width="80%"
+    [height]="videoHeight"
+  ></youtube-player>
+
+  <ng-template [ngIf]="!trailer">
+    <p>Trailer not available</p>
+  </ng-template>
+</div>
