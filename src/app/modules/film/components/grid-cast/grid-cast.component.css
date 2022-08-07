@@ -1,0 +1,16 @@
+
+h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.grid-cast {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 120px), 1fr));
+  gap: 20px;
+}
+
+.img-cast {
+  border-radius: 5px;
+  width: 100%;
+}

@@ -1,0 +1,19 @@
+<p-menubar class="navbar" [model]="items">
+  <ng-template pTemplate="start">
+    <a routerLink="/home">
+      <img src="../../../../assets/img/film-icon.svg" height="40" class="p-mr-2" alt=""/>
+    </a>
+  </ng-template>
+  <ng-template pTemplate="end">
+    <span class="p-input-icon-right">
+      <i class="pi pi-search" (click)="searchFilm(textSearch.value)"></i>
+      <input
+        #textSearch
+        type="text"
+        pInputText
+        placeholder="Buscar película"
+        (keyup.enter)="searchFilm(textSearch.value)"
+      />
+    </span>
+  </ng-template>
+</p-menubar>

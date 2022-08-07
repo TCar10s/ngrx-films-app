@@ -1,0 +1,13 @@
+<div
+  class="grid-cast animate__animated animate__fadeIn animate__faster"
+>
+  <div *ngFor="let actor of cast">
+    <img
+      class="img-cast p-shadow-3"
+      [src]="actor.profile_path | poster"
+      [alt]="actor.name"
+      loading="lazy"
+    />
+    <p style="margin: 0">{{ actor.name }}</p>
+  </div>
+</div>

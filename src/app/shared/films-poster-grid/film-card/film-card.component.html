@@ -1,17 +1,17 @@
-<div (click)="viewMoreDetails(film)">
-<!--  [src]="film.poster_path | poster"-->
+<div (click)="viewMoreDetails(film)" class="">
   <img
-    class="poster p-shadow-5"
+    class="poster shadow-5 border-round-lg"
     width="100%"
     [lazyLoad]="film.poster_path | poster"
     alt="{{ film.title }}"
     loading="lazy"
-    src=""/>
+    src=""
+  />
   <h3>{{ film.title }}</h3>
 
-  <div class="p-d-flex p-jc-between">
+  <div class="flex justify-content-between">
     <star-rating
-      [value]="film.vote_average * 0.5"
+      [value]="voteAverage"
       totalstars="5"
       checkedcolor="yellow"
       uncheckedcolor="grey"

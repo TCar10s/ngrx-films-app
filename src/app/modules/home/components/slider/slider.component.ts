@@ -1,39 +1,38 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { Film } from '../../../../core/interfaces/billboard-response';
-import Swiper from 'swiper';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
+import { Film } from '@core/interfaces/billboard-response';
 import { Router } from '@angular/router';
-import { FilmsService } from 'src/app/core/services/films.service';
 import { Observable } from 'rxjs';
+import { SwiperComponent } from 'swiper/angular';
+import SwiperCore, { Navigation, SwiperOptions } from 'swiper';
+
+SwiperCore.use([Navigation]);
 
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.css'],
 })
-export class SliderComponent implements OnInit, AfterViewInit {
+export class SliderComponent implements OnInit {
+  @ViewChild('swiper', {static: false}) swiper?: SwiperComponent;
 
-  public films$: Observable<Film[]> = this.filmService.films$;
+  @Input() films$: Observable<Film[]>;
   public routeFilm: string;
-  public swiper!: Swiper;
 
-  constructor(private route: Router, private filmService: FilmsService) {
+  config: SwiperOptions = {
+    slidesPerView: 1,
+    spaceBetween: 10,
+    navigation: true,
+  };
+
+  constructor(private route: Router) {
+    this.films$ = new Observable<Film[]>();
     this.routeFilm = 'https://image.tmdb.org/t/p/original';
   }
 
-  ngAfterViewInit(): void {
-    this.swiper = new Swiper('.swiper-container', {
-      loop: true,
+  ngOnInit(): void {
+    this.films$.subscribe((films) => {
+      console.log(films);
     });
-  }
-
-  ngOnInit(): void {}
-
-  onSlideNext = () => {
-    this.swiper.slideNext();
-  }
-
-  onSlidePrev = () => {
-    this.swiper.slidePrev();
   }
 
   navigateFilm = (film: Film) => {

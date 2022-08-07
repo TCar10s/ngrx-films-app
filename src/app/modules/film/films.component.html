@@ -1,79 +1,39 @@
-<div
-  class="p-mt-5 animate__animated animate__fadeIn animate__faster"
-  *ngIf="film"
->
-  <div class="grid">
-    <div class="p-mb-4">
+<div class="m-4 animate__animated animate__fadeIn">
+
+  <button
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-arrow-left"
+    class="p-button-rounded p-button-outlined mb-3"
+    (click)="backPage()"
+  ></button>
+
+  <div class="grid gap-3">
+    <div class="col-12 md:col-4">
       <img
-        class="p-shadow-5 poster p-mb-4"
+        width="100%"
+        class="shadow-5 poster"
         [src]="film.poster_path | poster"
         [alt]="film.title"
         loading="lazy"
       />
-      <p-button
-        label="Volver"
-        icon="pi pi-arrow-left"
-        styleClass="p-button"
-        (click)="backPage()"
-      ></p-button>
     </div>
 
-    <p-tabView>
-      <p-tabPanel header="Información" leftIcon="pi pi-info-circle">
-        <div class="p-mb-2 animate__animated animate__fadeIn animate__faster">
-          <h1 class="p-text-normal">{{ film.title }}</h1>
+    <div class="col-12 md:col-7">
+      <p-tabView>
+        <p-tabPanel header="Información" leftIcon="pi pi-info-circle">
+          <app-start-rating [film]="film"></app-start-rating>
+        </p-tabPanel>
 
-          <div class="p-d-flex p-ai-center">
-            <star-rating
-              [value]="film.vote_average * 0.5"
-              totalstars="5"
-              checkedcolor="yellow"
-              uncheckedcolor="grey"
-              size="20px"
-              readonly="false"
-            ></star-rating>
-            <p class="p-ml-2">
-              {{ film.vote_average * 0.5 | number: "1.1-2" }}
-            </p>
-          </div>
+        <p-tabPanel header="Casting" leftIcon="pi pi-users">
+          <app-grid-cast [cast]="cast"></app-grid-cast>
+        </p-tabPanel>
 
-          <p class="overview p-mb-5">{{ film.overview }}</p>
-        </div>
-      </p-tabPanel>
-
-      <p-tabPanel header="Casting" leftIcon="pi pi-users">
-        <div
-          class="grid-cast animate__animated animate__fadeIn animate__faster"
-        >
-          <div *ngFor="let actor of cast">
-            <img
-              class="img-cast p-shadow-3"
-              [src]="actor.profile_path | poster"
-              [alt]="actor.name"
-              loading="lazy"
-            />
-            <p style="margin: 0">{{ actor.name }}</p>
-          </div>
-        </div>
-      </p-tabPanel>
-
-      <p-tabPanel header="Trailer" leftIcon="pi pi-youtube">
-        <div
-          #demoYouTubePlayer
-          class="demo-youtube-player animate__animated animate__fadeIn animate__faster"
-        >
-          <youtube-player
-            *ngIf="trailer"
-            [videoId]="trailer?.key"
-            width="100%"
-            [height]="videoHeight"
-          ></youtube-player>
-
-          <ng-template [ngIf]="!trailer">
-            <p>Trailer not available</p>
-          </ng-template>
-        </div>
-      </p-tabPanel>
-    </p-tabView>
+        <p-tabPanel header="Trailer" leftIcon="pi pi-youtube">
+          <app-youtube-player [trailer]="trailer"></app-youtube-player>
+        </p-tabPanel>
+      </p-tabView>
+    </div>
   </div>
 </div>
