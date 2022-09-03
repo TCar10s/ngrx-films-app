@@ -38,7 +38,6 @@ export class FilmsService {
   }
 
   getBillboard = (): Observable<Film[]> => {
-    console.log(this.billboardPage)
     return this.http
       .get<BillboardResponse>(`${environment.API_URL}/movie/now_playing?`, {
         params: this.params,
