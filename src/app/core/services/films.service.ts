@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { combineLatest, Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { BillboardResponse } from '../interfaces/billboard-response';
-import { Film } from '../interfaces/film';
+import { Film, FilmDetails } from '../interfaces/film';
 import { Cast, CastResponse } from '../interfaces/cast-response';
 import { Trailer, TrailerResponse } from '../interfaces/trailer-response';
 import { environment } from 'src/environments/environment';
 
 /*
-  - El operador tab de los rxjs/opetaros, ejecuta cierto código
+  - El operador tab de los rxjs/operators, ejecuta cierto código
     cada vez que el observable emita un valor.
   - El operador of transforma el observable que emite el
     valor que proporcionemos.
@@ -51,7 +51,7 @@ export class FilmsService {
           poster_path: film.poster_path,
           vote_average: film.vote_average,
           overview: film.overview,
-          genres: film.genres,
+          backdrop_path: film.backdrop_path,
         }))),
         tap(() => {
           this.billboardPage++;
@@ -119,13 +119,13 @@ export class FilmsService {
       );
   }
 
-  // getFilmdDetails = (id: string): Observable<Film> => {
-  //   combineLatest([
-  //     this.getFilm(id),
-  //     this.getCast(id),
-  //     this.getTrailer(id),
-  //   ])
-  // }
+  getFilmDetails = (id: string): Observable<FilmDetails> => {
+    return combineLatest([
+      this.getFilm(id),
+      this.getCast(id),
+      this.getTrailer(id),
+    ]);
+  }
 
   getByCategory = (category: string): Observable<Film[]> => {
     const params = {...this.params, page: this.filmByCategory.toString()};

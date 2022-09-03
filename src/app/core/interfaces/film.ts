@@ -1,4 +1,5 @@
 import { Cast } from '@core/interfaces/cast-response';
+import { Trailer } from '@core/interfaces/trailer-response';
 
 export interface Film {
   id: number;
@@ -10,17 +11,11 @@ export interface Film {
   backdrop_path?: string;
 }
 
-export interface FilmDetails {
-  film: Film;
-  cast: Cast[];
-
-}
+export type FilmDetails = [Film, Cast[], Trailer[]];
 
 export interface Genre {
   id: number;
   name: string;
 }
 
-export interface FilmDetailsState {
-  film: Film;
-}
+export type FilmDetailsState = FilmDetails;

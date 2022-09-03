@@ -27,11 +27,11 @@
         </p-tabPanel>
 
         <p-tabPanel header="Casting" leftIcon="pi pi-users">
-          <app-grid-cast [cast]="cast"></app-grid-cast>
+          <app-grid-cast *ngIf="cast$ | async as cast" [cast]="cast"></app-grid-cast>
         </p-tabPanel>
 
         <p-tabPanel header="Trailer" leftIcon="pi pi-youtube">
-          <app-youtube-player [trailer]="trailer"></app-youtube-player>
+          <app-youtube-player *ngIf="trailer$ | async as trailer" [trailer]="trailer[0]"></app-youtube-player>
         </p-tabPanel>
       </p-tabView>
     </div>
