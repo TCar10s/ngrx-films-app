@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import { loadInitialBillboard, loadMoreBillboard } from '@state/actions/billboard.actions';
-import { Film } from '@core/interfaces/billboard-response';
 import { Observable } from 'rxjs';
 import { selectBillboardFilms } from '@state/selectors/billboard.selectors';
+import { Film } from '@core/interfaces/film';
 
 @Component({
   selector: 'app-home',

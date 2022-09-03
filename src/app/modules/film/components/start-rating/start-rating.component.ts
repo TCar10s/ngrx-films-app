@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FilmDetails } from '@core/interfaces/film-details';
+import { Film } from '@core/interfaces/film';
 
 @Component({
   selector: 'app-start-rating',
@@ -8,7 +8,7 @@ import { FilmDetails } from '@core/interfaces/film-details';
 })
 export class StartRatingComponent implements OnInit {
 
-  @Input() film!: FilmDetails;
+  @Input() film!: Film;
 
   constructor() {}
 

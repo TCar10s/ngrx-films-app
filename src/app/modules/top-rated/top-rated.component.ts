@@ -1,9 +1,9 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Film } from 'src/app/core/interfaces/billboard-response';
 import { FilmsService } from 'src/app/core/services/films.service';
 import { TopRatedService } from './services/top-rated.service';
 import { UtilitiesService } from '@core/services/utilities.service';
+import { Film } from '@core/interfaces/film';
 
 @Component({
   selector: 'app-top-rated',
