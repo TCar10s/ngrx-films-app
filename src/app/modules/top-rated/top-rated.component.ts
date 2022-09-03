@@ -3,8 +3,7 @@ import { Observable } from 'rxjs';
 import { Film } from 'src/app/core/interfaces/billboard-response';
 import { FilmsService } from 'src/app/core/services/films.service';
 import { TopRatedService } from './services/top-rated.service';
-import { UtilitiesService } from '../../core/services/utilities.service';
-
+import { UtilitiesService } from '@core/services/utilities.service';
 
 @Component({
   selector: 'app-top-rated',
@@ -45,7 +44,7 @@ export class TopRatedComponent implements OnInit {
   }
 
   getMoreFilms = () => {
-    const positionScroll = this.utilitiesService.calcularPositionScroll();
+    const positionScroll = this.utilitiesService.getScrollPosition();
     const {loadingMoreFilms} = this.filmService;
 
     if (!positionScroll) {

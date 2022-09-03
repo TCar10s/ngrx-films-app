@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Film } from '@core/interfaces/billboard-response';
+import { loadMoreBillboard } from '@state/actions/billboard.actions';
+import { Store } from '@ngrx/store';
+import { AppState } from '@state/app.state';
 
 @Component({
   selector: 'app-films-poster-grid',
@@ -10,12 +13,13 @@ import { Film } from '@core/interfaces/billboard-response';
 })
 export class FilmsPosterGridComponent implements OnInit {
   @Input() films$: Observable<Film[]> = new Observable<Film[]>();
-  public loader = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
-  ngOnInit(): void {
-    setTimeout(() => this.loader = false, 1000);
+  ngOnInit(): void {}
+
+  loadMoreFilms = () => {
+    this.store.dispatch(loadMoreBillboard());
   }
 
   viewMoreDetails = (id: number) => {

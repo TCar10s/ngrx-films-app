@@ -1,7 +1,7 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { FilmsService } from 'src/app/core/services/films.service';
 import { UpcomingFilmsService } from './services/upcoming-films.service';
-import { UtilitiesService } from '../../core/services/utilities.service';
+import { UtilitiesService } from '@core/services/utilities.service';
 
 @Component({
   selector: 'app-upcoming',
@@ -40,7 +40,7 @@ export class UpcomingComponent implements OnInit {
   }
 
   getMoreFilms = () => {
-    const positionScroll = this.utilitiesService.calcularPositionScroll();
+    const positionScroll = this.utilitiesService.getScrollPosition();
     const {loadingMoreFilms} = this.filmService;
 
     if (!positionScroll) {

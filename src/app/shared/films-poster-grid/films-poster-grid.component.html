@@ -3,3 +3,15 @@
     <app-film-card [film]="film" (showDetails)="viewMoreDetails($event)"></app-film-card>
   </div>
 </div>
+
+<div class="flex justify-content-center my-5">
+  <button
+    pTooltip="Load more films"
+    pButton
+    pRipple
+    type="button"
+    icon="pi pi-arrow-down"
+    class="p-button-rounded p-button-outlined"
+    (click)="loadMoreFilms()"
+  ></button>
+</div>
