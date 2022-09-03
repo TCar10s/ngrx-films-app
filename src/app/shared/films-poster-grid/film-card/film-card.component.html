@@ -2,7 +2,7 @@
   <img
     class="poster shadow-5 border-round-lg"
     width="100%"
-    [lazyLoad]="film.poster_path | poster"
+    [lazyLoad]="film.poster_path | poster:true"
     alt="{{ film.title }}"
     loading="lazy"
     src=""

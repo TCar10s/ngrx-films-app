@@ -1,9 +1,10 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FilmsService } from 'src/app/core/services/films.service';
-import { TopRatedService } from './services/top-rated.service';
-import { UtilitiesService } from '@core/services/utilities.service';
 import { Film } from '@core/interfaces/film';
+import { Store } from '@ngrx/store';
+import { AppState } from '@state/app.state';
+import { selectTopRatedFilms } from '@state/selectors/film.selectors';
+import { loadInitialTopRatedFilms, loadMoreTopRatedFilms } from '@state/actions/film.actions';
 
 @Component({
   selector: 'app-top-rated',
@@ -11,49 +12,19 @@ import { Film } from '@core/interfaces/film';
   styleUrls: ['./top-rated.component.css'],
 })
 export class TopRatedComponent implements OnInit {
-  public films$!: Observable<Film[]>;
+  public films$: Observable<Film[]> = this.store.select(selectTopRatedFilms);
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll(): void {
-    this.getMoreFilms();
-  }
-
-  constructor(
-    private filmService: FilmsService,
-    private utilitiesService: UtilitiesService,
-    public topRatedService: TopRatedService
-  ) {
-  }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.validateRatedFilmsStatus();
+    this.getInitialFilms();
   }
 
-  validateRatedFilmsStatus(): void {
-    const films = this.topRatedService.getTopRatedFilms();
-
-    if (films.length === 0) {
-      this.getTopRatedFilms();
-    }
+  getInitialFilms = (): void => {
+    this.store.dispatch(loadInitialTopRatedFilms({ category: 'top_rated' }));
   }
 
-  getTopRatedFilms = () => {
-    this.filmService.getByCategory('top_rated').subscribe(films => {
-      this.topRatedService.setTopRatedFilms(films); // BehaviorSubject
-    });
-  }
-
-  getMoreFilms = () => {
-    const positionScroll = this.utilitiesService.getScrollPosition();
-    const {loadingMoreFilms} = this.filmService;
-
-    if (!positionScroll) {
-      return;
-    }
-    if (loadingMoreFilms) {
-      return;
-    }
-
-    this.getTopRatedFilms();
+  loadMoreFilms = (): void => {
+    this.store.dispatch(loadMoreTopRatedFilms({ category: 'top_rated' }));
   }
 }
