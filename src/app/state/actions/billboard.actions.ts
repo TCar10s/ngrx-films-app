@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Film } from '@core/interfaces/billboard-response';
+import { Film } from '@core/interfaces/film';
 
 export const loadInitialBillboard = createAction('[Billboard] Load initial billboard');
 export const loadMoreBillboard = createAction('[Billboard] Load more billboard');

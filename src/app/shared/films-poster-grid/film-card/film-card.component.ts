@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Film, OriginalLanguage } from '@core/interfaces/billboard-response';
+import { Film } from '@core/interfaces/film';
 
 @Component({
   selector: 'app-film-card',
@@ -9,20 +9,12 @@ import { Film, OriginalLanguage } from '@core/interfaces/billboard-response';
 export class FilmCardComponent implements OnInit {
 
   @Input() film: Film = {
-    adult: false,
-    backdrop_path: '',
-    genre_ids: [],
     id: 0,
-    original_language: OriginalLanguage.En,
-    original_title: '',
     overview: '',
-    popularity: 0,
     poster_path: '',
-    release_date: new Date(),
     title: '',
-    video: false,
     vote_average: 0,
-    vote_count: 0
+    genres: []
   };
   @Output() showDetails: EventEmitter<number> = new EventEmitter<number>();
 

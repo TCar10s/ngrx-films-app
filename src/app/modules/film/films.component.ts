@@ -1,9 +1,9 @@
 import { Component, OnInit, } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FilmDetails } from 'src/app/core/interfaces/film-details';
+import { Film } from '@core/interfaces/film';
 import { FilmsService } from 'src/app/core/services/films.service';
 import { Location } from '@angular/common';
-import { Cast } from '@core/interfaces/credits-response';
+import { Cast } from '@core/interfaces/cast-response';
 import { combineLatest, Observable } from 'rxjs';
 import { Trailer } from '@core/interfaces/trailer-response';
 import { AppState } from '@state/app.state';
@@ -23,7 +23,7 @@ import { loadFilmDetails } from '@state/actions/film.actions';
   styleUrls: [ './films.component.css' ],
 })
 export class FilmsComponent implements OnInit {
-  public film$: Observable<FilmDetails> = this.store.select(selectFilmDetails);
+  public film$: Observable<Film> = this.store.select(selectFilmDetails);
   public cast: Cast[] = [ {} as Cast ];
   public trailer: Trailer = {} as Trailer;
 

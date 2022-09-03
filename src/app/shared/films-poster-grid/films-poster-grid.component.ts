@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Film } from '@core/interfaces/billboard-response';
+import { Film } from '@core/interfaces/film';
 
 @Component({
   selector: 'app-films-poster-grid',

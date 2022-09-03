@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Film } from '@core/interfaces/billboard-response';
+import { Film } from '@core/interfaces/film';
 
 @Injectable()
 export class TopRatedService {

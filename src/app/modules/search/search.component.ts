@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Film } from 'src/app/core/interfaces/billboard-response';
 import { FilmsService } from 'src/app/core/services/films.service';
+import { Film } from '@core/interfaces/film';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',

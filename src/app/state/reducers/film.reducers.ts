@@ -1,9 +1,10 @@
-import { FilmDetailsState } from '@core/interfaces/film-details';
+import { FilmDetailsState } from '@core/interfaces/film';
 import { createReducer, on } from '@ngrx/store';
-import { loadFilmDetails, loadFilmDetailsSuccess } from '@state/actions/film.actions';
+import { loadFilmDetails, loadedFilmDetails } from '@state/actions/film.actions';
 
 export const filmDetailsState: FilmDetailsState = {
   film: {
+    id: 0,
     overview: '',
     poster_path: '',
     title: '',
@@ -15,5 +16,5 @@ export const filmDetailsState: FilmDetailsState = {
 export const filmDetailsReducer = createReducer(
   filmDetailsState,
   on(loadFilmDetails, (oldState, film) => ({...oldState, ...film})),
-  on(loadFilmDetailsSuccess, (oldState, film) => ({...oldState, ...film})),
+  on(loadedFilmDetails, (oldState, film) => ({...oldState, ...film})),
 );

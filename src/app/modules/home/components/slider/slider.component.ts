@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
-import { Film } from '@core/interfaces/billboard-response';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SwiperComponent } from 'swiper/angular';
 import SwiperCore, { Navigation, SwiperOptions } from 'swiper';
+import { Film } from '@core/interfaces/film';
 
 SwiperCore.use([Navigation]);
 

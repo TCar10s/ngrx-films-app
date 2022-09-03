@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Cast } from '@core/interfaces/credits-response';
+import { Cast } from '@core/interfaces/cast-response';
 
 @Component({
   selector: 'app-grid-cast',
