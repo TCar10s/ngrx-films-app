@@ -13,8 +13,7 @@ import { ROOT_REDUCERS } from '@state/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { BillboardEffects } from '@state/effects/billboard.effects';
-import { FilmEffects } from '@state/effects/film.effects';
+import { BillboardEffects, FilmEffects } from '@state/effects';
 
 @NgModule({
   declarations: [AppComponent],

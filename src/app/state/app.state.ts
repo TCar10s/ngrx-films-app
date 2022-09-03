@@ -6,12 +6,12 @@ import { filmDetailsReducer } from '@state/reducers/film.reducers';
 
 export interface AppState {
   billboard: BillboardState;
-  film: FilmDetailsState;
+  filmDetails: FilmDetailsState;
 }
 
 export const ROOT_REDUCERS: ActionReducerMap<AppState> = {
   billboard: billboardReducer,
-  film: filmDetailsReducer,
+  filmDetails: filmDetailsReducer,
 };
 
 
