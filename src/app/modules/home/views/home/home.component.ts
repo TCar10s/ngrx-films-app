@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
-import { loadInitialBillboard } from '@state/actions/billboard.actions';
+import { loadInitialBillboard, loadMoreBillboard } from '@state/actions/billboard.actions';
 import { Film } from '@core/interfaces/billboard-response';
 import { Observable } from 'rxjs';
 import { selectBillboardFilms } from '@state/selectors/billboard.selectors';
@@ -19,6 +19,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInitialFilms();
+  }
+
+  loadMoreFilms = (): void => {
+    this.store.dispatch(loadMoreBillboard());
   }
 
   getInitialFilms = (): void => {
