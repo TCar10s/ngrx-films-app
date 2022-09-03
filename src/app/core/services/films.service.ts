@@ -44,7 +44,7 @@ export class FilmsService {
         params: this.params,
       })
       .pipe(
-        map(({results}) => results),
+        map(({ results }) => results),
         map(this.utilitiesService.adapterFilmsProps),
         tap(() => {
           this.billboardPage++;
@@ -79,10 +79,13 @@ export class FilmsService {
         params: this.params,
       })
       .pipe(
-        map(({cast}) => cast.map((actor) => ({
-          original_name: actor.original_name,
-          profile_path: actor.profile_path,
-        }))),
+        map(({cast}) =>
+          cast.map((actor) => ({
+            original_name: actor.original_name,
+            profile_path: actor.profile_path,
+          }))
+          .slice(0, 10)
+        ),
         catchError((error) => of([]))
       );
   }
@@ -95,7 +98,7 @@ export class FilmsService {
         params,
       })
       .pipe(
-        map((resp) => resp.results),
+        map(({ results }) => results),
         map((trailers) => trailers.map((trailer) => ({
           id: trailer.id,
           key: trailer.key,
@@ -120,8 +123,8 @@ export class FilmsService {
         params,
       })
       .pipe(
-        tap(console.log),
-        map((resp) => resp.results),
+        map(({ results }) => results),
+        map(this.utilitiesService.adapterFilmsProps),
         tap(() => {
           this.filmByCategory++;
         }),

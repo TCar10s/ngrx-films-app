@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit {
     this.getInitialFilms();
   }
 
-  loadMoreFilms = (): void => {
-    this.store.dispatch(loadMoreBillboard());
-  }
-
   getInitialFilms = (): void => {
     this.store.dispatch(loadInitialBillboard());
+  }
+
+  loadMoreFilms = (): void => {
+    this.store.dispatch(loadMoreBillboard());
   }
 }
