@@ -7,6 +7,7 @@ import { Film, FilmDetails } from '../interfaces/film';
 import { Cast, CastResponse } from '../interfaces/cast-response';
 import { Trailer, TrailerResponse } from '../interfaces/trailer-response';
 import { environment } from 'src/environments/environment';
+import { UtilitiesService } from '@core/services/utilities.service';
 
 /*
   - El operador tab de los rxjs/operators, ejecuta cierto código
@@ -23,7 +24,7 @@ export class FilmsService {
   public loadingMoreFilms: boolean;
   private billboardPage: number;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {
     this.filmByCategory = 1;
     this.billboardPage = 1;
     this.loadingMoreFilms = false;
@@ -44,14 +45,7 @@ export class FilmsService {
       })
       .pipe(
         map(({results}) => results),
-        map(films => films.map(film => ({
-          id: film.id,
-          title: film.title,
-          poster_path: film.poster_path,
-          vote_average: film.vote_average,
-          overview: film.overview,
-          backdrop_path: film.backdrop_path,
-        }))),
+        map(this.utilitiesService.adapterFilmsProps),
         tap(() => {
           this.billboardPage++;
         })
@@ -74,14 +68,7 @@ export class FilmsService {
         params: this.params,
       })
       .pipe(
-        map((film) => ({
-          id: film.id,
-          title: film.title,
-          poster_path: film.poster_path,
-          vote_average: film.vote_average,
-          overview: film.overview,
-          genres: film.genres,
-        })),
+        map(this.utilitiesService.adapterFilmProps),
         catchError((error) => of({} as Film))
       );
   }
@@ -133,6 +120,7 @@ export class FilmsService {
         params,
       })
       .pipe(
+        tap(console.log),
         map((resp) => resp.results),
         tap(() => {
           this.filmByCategory++;
