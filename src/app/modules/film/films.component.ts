@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Film } from '@core/interfaces/film';
 import { Location } from '@angular/common';
 import { Cast } from '@core/interfaces/cast-response';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Trailer } from '@core/interfaces/trailer-response';
 import { AppState } from '@state/app.state';
 import { Store } from '@ngrx/store';
@@ -24,7 +24,7 @@ import { selectCast, selectFilm, selectTrailer } from '@state/selectors/film.sel
 export class FilmsComponent implements OnInit {
   public film$: Observable<Film> = this.store.select(selectFilm);
   public cast$: Observable<Cast[]> = this.store.select(selectCast);
-  public trailer$: Observable<Trailer[]> = this.store.select(selectTrailer).pipe(tap(console.log));
+  public trailer$: Observable<Trailer[]> = this.store.select(selectTrailer);
 
   constructor(
     private activatedRoute: ActivatedRoute,
