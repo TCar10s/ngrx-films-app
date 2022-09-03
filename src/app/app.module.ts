@@ -13,10 +13,10 @@ import { ROOT_REDUCERS } from '@state/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '@environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { BillboardEffects, FilmEffects } from '@state/effects';
+import { BillboardEffects, FilmEffects, TopRatedEffects } from '@state/effects';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [ AppComponent ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -29,9 +29,10 @@ import { BillboardEffects, FilmEffects } from '@state/effects';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([BillboardEffects, FilmEffects]),
+    EffectsModule.forRoot([ BillboardEffects, FilmEffects, TopRatedEffects ]),
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [ AppComponent ],
 })
-export class AppModule {}
+export class AppModule {
+}

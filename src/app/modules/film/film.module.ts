@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { FilmsComponent } from './films.component';
-import { PipesModule } from '@shared/pipes/pipes.module';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { RatingModule } from 'ng-starrating';
@@ -13,12 +12,13 @@ import { GridCastComponent } from './components/grid-cast/grid-cast.component';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
 import { RippleModule } from 'primeng/ripple';
 import { ChipModule } from 'primeng/chip';
+import { PosterPipe } from '@shared/pipes/poster.pipe';
 
 @NgModule({
   declarations: [ FilmsComponent, StartRatingComponent, GridCastComponent, YoutubePlayerComponent ],
   imports: [
     CommonModule,
-    PipesModule,
+    PosterPipe,
     ButtonModule,
     TabViewModule,
     RatingModule,

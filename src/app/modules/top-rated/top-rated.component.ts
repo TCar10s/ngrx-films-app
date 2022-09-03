@@ -4,7 +4,7 @@ import { Film } from '@core/interfaces/film';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import { selectTopRatedFilms } from '@state/selectors/film.selectors';
-import { loadInitialTopRatedFilms, loadMoreTopRatedFilms } from '@state/actions/film.actions';
+import { loadInitialTopRatedFilms, loadMoreTopRatedFilms } from '@state/actions/top-rated.actions';
 
 @Component({
   selector: 'app-top-rated',
