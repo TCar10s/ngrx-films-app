@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FilmsPosterGridComponent } from './films-poster-grid.component';
 import { RatingModule } from 'ng-starrating';
-import { PipesModule } from '../pipes/pipes.module';
 import { FilmCardComponent } from './film-card/film-card.component';
 import { SkeletonModule } from 'primeng/skeleton';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { TooltipModule } from 'primeng/tooltip';
+import { PosterPipe } from '@shared/pipes/poster.pipe';
 
 @NgModule({
   declarations: [FilmsPosterGridComponent, FilmCardComponent],
@@ -18,7 +18,7 @@ import { TooltipModule } from 'primeng/tooltip';
   imports: [
     CommonModule,
     RatingModule,
-    PipesModule,
+    PosterPipe,
     SkeletonModule,
     LazyLoadImageModule,
     ButtonModule,

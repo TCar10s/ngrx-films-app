@@ -46,9 +46,7 @@ export class FilmsService {
       .pipe(
         map(({ results }) => results),
         map(this.utilitiesService.adapterFilmsProps),
-        tap(() => {
-          this.billboardPage++;
-        })
+        tap(() => this.billboardPage++)
       );
   }
 
@@ -125,9 +123,7 @@ export class FilmsService {
       .pipe(
         map(({ results }) => results),
         map(this.utilitiesService.adapterFilmsProps),
-        tap(() => {
-          this.filmByCategory++;
-        }),
+        tap(() => this.filmByCategory++),
         catchError((error) => of([]))
       );
   }
