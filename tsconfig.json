@@ -17,7 +17,8 @@
       "@core/*": ["./src/app/core/*" ],
       "@modules/*": ["./src/app/modules/*"],
       "@shared/*": ["./src/app/shared/*"],
-      "@environments/*": ["./src/environments/*"]
+      "@state/*": ["./src/app/state/*"],
+      "@environments/*": ["./src/environments/*"],
     },
     "lib": [
       "es2018",

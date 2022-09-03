@@ -12,9 +12,10 @@ import { StartRatingComponent } from './components/start-rating/start-rating.com
 import { GridCastComponent } from './components/grid-cast/grid-cast.component';
 import { YoutubePlayerComponent } from './components/youtube-player/youtube-player.component';
 import { RippleModule } from 'primeng/ripple';
+import { ChipModule } from 'primeng/chip';
 
 @NgModule({
-  declarations: [FilmsComponent, StartRatingComponent, GridCastComponent, YoutubePlayerComponent],
+  declarations: [ FilmsComponent, StartRatingComponent, GridCastComponent, YoutubePlayerComponent ],
   imports: [
     CommonModule,
     PipesModule,
@@ -24,6 +25,7 @@ import { RippleModule } from 'primeng/ripple';
     YouTubePlayerModule,
     FilmRoutingModule,
     RippleModule,
+    ChipModule,
   ]
 })
 export class FilmModule {

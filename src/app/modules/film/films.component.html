@@ -9,12 +9,12 @@
     (click)="backPage()"
   ></button>
 
-  <div class="grid gap-3">
+  <div *ngIf="film$ | async as film" class="grid gap-3">
     <div class="col-12 md:col-4">
       <img
         width="100%"
         class="shadow-5 poster"
-        [src]="film.poster_path | poster"
+        [src]="film.poster_path | poster : false"
         [alt]="film.title"
         loading="lazy"
       />

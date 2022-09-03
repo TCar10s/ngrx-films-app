@@ -4,7 +4,7 @@
   <div *ngFor="let actor of cast">
     <img
       class="img-cast p-shadow-3"
-      [src]="actor.profile_path | poster"
+      [src]="actor.profile_path | poster: true"
       [alt]="actor.name"
       loading="lazy"
     />

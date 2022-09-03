@@ -17,7 +17,7 @@ import { SwiperModule } from 'swiper/angular';
     ScrollTopModule,
     HomeRoutingModule,
     FilmsPosterGridModule,
-    SwiperModule
+    SwiperModule,
   ],
 })
 export class HomeModule {

@@ -29,11 +29,7 @@ export class SliderComponent implements OnInit {
     this.routeFilm = 'https://image.tmdb.org/t/p/original';
   }
 
-  ngOnInit(): void {
-    this.films$.subscribe((films) => {
-      console.log(films);
-    });
-  }
+  ngOnInit(): void {}
 
   navigateFilm = (film: Film) => {
     this.route.navigate(['/film', film.id]);

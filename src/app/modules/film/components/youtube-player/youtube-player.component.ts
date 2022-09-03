@@ -1,10 +1,19 @@
-import { Component, OnInit, Input, ViewChild, ElementRef, AfterViewInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  OnDestroy,
+  ChangeDetectorRef
+} from '@angular/core';
 import { Trailer } from '@core/interfaces/trailer-response';
 
 @Component({
   selector: 'app-youtube-player',
   templateUrl: './youtube-player.component.html',
-  styleUrls: ['./youtube-player.component.css']
+  styleUrls: [ './youtube-player.component.css' ]
 })
 export class YoutubePlayerComponent implements OnInit, AfterViewInit, OnDestroy {
 

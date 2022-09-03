@@ -6,12 +6,9 @@ import { PrimeNGConfig } from 'primeng/api';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
-  title = 'films-app';
-
-  constructor(
-    private primengConfig: PrimeNGConfig
-  ) {}
+export class AppComponent implements OnInit {
+  value = 'films-app';
+  constructor(private primengConfig: PrimeNGConfig) {}
 
   ngOnInit(): void {
     this.primengConfig.ripple = true;

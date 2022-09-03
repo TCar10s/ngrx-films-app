@@ -15,5 +15,13 @@
     </p>
   </div>
 
+  <div class="flex align-items-center">
+    <p-chip
+      [label]="genre.name"
+      styleClass="mr-2 mt-3"
+      *ngFor="let genre of film.genres">
+    </p-chip>
+  </div>
+
   <p class="overview">{{ film.overview }}</p>
 </div>

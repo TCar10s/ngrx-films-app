@@ -33,3 +33,8 @@ export enum OriginalLanguage {
   Es = 'es',
   Ja = 'ja',
 }
+
+export interface BillboardState {
+  films: ReadonlyArray<Film>;
+  loading: boolean;
+}

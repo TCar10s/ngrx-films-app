@@ -1,46 +1,27 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FilmsService } from '@core/services/films.service';
-import { UtilitiesService } from '@core/services/utilities.service';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from '@state/app.state';
+import { loadInitialBillboard } from '@state/actions/billboard.actions';
+import { Film } from '@core/interfaces/billboard-response';
+import { Observable } from 'rxjs';
+import { selectBillboardFilms } from '@state/selectors/billboard.selectors';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: [ './home.component.scss' ],
 })
 export class HomeComponent implements OnInit {
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll(): void {
-    this.getMoreFilms();
-  }
+  public films$: Observable<ReadonlyArray<Film>> = this.store.select(selectBillboardFilms);
 
-  constructor(public filmService: FilmsService, private utilitiesService: UtilitiesService) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.validateFilmsStatus();
+    this.getInitialFilms();
   }
 
-  validateFilmsStatus(): void {
-    const films = this.filmService.getFilms();
-
-    if (films.length === 0) {
-      this.getFilms();
-    }
-  }
-
-  getFilms = (): void => {
-    this.filmService.getBillboard().subscribe((films) => {
-      this.filmService.setFilms(films); // BehaviorSubject
-    });
-  }
-
-  getMoreFilms = () => {
-    const positionScroll = this.utilitiesService.calcularPositionScroll();
-    const { loadingMoreFilms } = this.filmService;
-
-    if (!positionScroll) { return; }
-    if (loadingMoreFilms) { return; }
-
-    this.getFilms();
+  getInitialFilms = (): void => {
+    this.store.dispatch(loadInitialBillboard());
   }
 }

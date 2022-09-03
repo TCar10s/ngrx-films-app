@@ -6,6 +6,9 @@ import { PipesModule } from '../pipes/pipes.module';
 import { FilmCardComponent } from './film-card/film-card.component';
 import { SkeletonModule } from 'primeng/skeleton';
 import { LazyLoadImageModule } from 'ng-lazyload-image';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { TooltipModule } from 'primeng/tooltip';
 
 @NgModule({
   declarations: [FilmsPosterGridComponent, FilmCardComponent],
@@ -17,7 +20,10 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
     RatingModule,
     PipesModule,
     SkeletonModule,
-    LazyLoadImageModule
+    LazyLoadImageModule,
+    ButtonModule,
+    RippleModule,
+    TooltipModule
   ]
 })
 export class FilmsPosterGridModule { }
