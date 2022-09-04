@@ -18,5 +18,3 @@ export const selectTrailer = createSelector(
   selectFilmFeature,
   (state: FilmDetailsState) => state[2]
 );
-
-export const selectTopRatedFilms = (state: AppState) => state.topRatedFilms;

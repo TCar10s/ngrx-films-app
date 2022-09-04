@@ -17,7 +17,7 @@
       "@core/*": ["./src/app/core/*" ],
       "@modules/*": ["./src/app/modules/*"],
       "@shared/*": ["./src/app/shared/*"],
-      "@state/*": ["./src/app/state/*"],
+      "@store/*": ["./src/app/core/store/*"],
       "@environments/*": ["./src/environments/*"],
     },
     "lib": [

@@ -1,7 +1,9 @@
-import { Component, HostListener, OnInit } from '@angular/core';
-import { FilmsService } from 'src/app/core/services/films.service';
-import { UpcomingFilmsService } from './services/upcoming-films.service';
-import { UtilitiesService } from '@core/services/utilities.service';
+import { Component, OnInit } from '@angular/core';
+import { Film } from '@core/interfaces/film';
+import { AppState } from '@core/store/app.state';
+import { CategoryActions, selectUpcomingFilms } from '@core/store/category';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-upcoming',
@@ -9,47 +11,23 @@ import { UtilitiesService } from '@core/services/utilities.service';
   styleUrls: ['./upcoming.component.css'],
 })
 export class UpcomingComponent implements OnInit {
+  public films$: Observable<Film[]> = this.store.select(selectUpcomingFilms);
 
-  @HostListener('window:scroll', ['$event'])
-  onScroll(): void {
-    this.getMoreFilms();
-  }
-
-  constructor(
-    private filmService: FilmsService,
-    public upcomingFilmsService: UpcomingFilmsService,
-    private utilitiesService: UtilitiesService
-  ) {}
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.validateTopRatedFilmsStatus();
+    this.getInitialFilms();
   }
 
-  validateTopRatedFilmsStatus(): void {
-    const films = this.upcomingFilmsService.getUpcomingFilms();
+  getInitialFilms = (): void => {
+    this.store.dispatch(
+      CategoryActions.loadInitialUpcomingFilms({ category: 'upcoming' })
+    );
+  };
 
-    if (films.length === 0) {
-      this.getUpcomingFilms();
-    }
-  }
-
-  getUpcomingFilms = () => {
-    this.filmService.getByCategory('upcoming').subscribe(films => {
-      this.upcomingFilmsService.setUpcomingFilms(films);
-    });
-  }
-
-  getMoreFilms = () => {
-    const positionScroll = this.utilitiesService.getScrollPosition();
-    const {loadingMoreFilms} = this.filmService;
-
-    if (!positionScroll) {
-      return;
-    }
-    if (loadingMoreFilms) {
-      return;
-    }
-
-    this.getUpcomingFilms();
-  }
+  loadMoreFilms = (): void => {
+    this.store.dispatch(
+      CategoryActions.loadMoreUpcomingFilms({ category: 'upcoming' })
+    );
+  };
 }
