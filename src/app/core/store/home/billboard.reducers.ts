@@ -1,6 +1,6 @@
 import { BillboardState } from '@core/interfaces/billboard-response';
 import { createReducer, on } from '@ngrx/store';
-import { addFilmsToBillboard, loadInitialBillboard, loadMoreBillboard } from '../actions/billboard.actions';
+import { addFilmsToBillboard, loadInitialBillboard, loadMoreBillboard } from './billboard.actions';
 
 export const initialBillboardState: BillboardState = {
   films: [],

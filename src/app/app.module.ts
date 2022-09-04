@@ -8,13 +8,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { CoreModule } from '@core/core.module';
 
-import { StoreModule } from '@ngrx/store';
-import { ROOT_REDUCERS } from '@state/app.state';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '@environments/environment';
-import { EffectsModule } from '@ngrx/effects';
-import { BillboardEffects, FilmEffects, TopRatedEffects } from '@state/effects';
-
 @NgModule({
   declarations: [ AppComponent ],
   imports: [
@@ -23,13 +16,7 @@ import { BillboardEffects, FilmEffects, TopRatedEffects } from '@state/effects';
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    CoreModule,
-    StoreModule.forRoot(ROOT_REDUCERS),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25,
-      logOnly: environment.production,
-    }),
-    EffectsModule.forRoot([ BillboardEffects, FilmEffects, TopRatedEffects ]),
+    CoreModule
   ],
   providers: [],
   bootstrap: [ AppComponent ],

@@ -1,6 +1,6 @@
-import { Film, FilmDetailsState } from '@core/interfaces/film';
+import { FilmDetailsState } from '@core/interfaces/film';
 import { createReducer, on } from '@ngrx/store';
-import { loadedFilmDetails, loadFilmDetails, } from '@state/actions/film.actions';
+import { loadedFilmDetails, loadFilmDetails, } from '@store/film/film.actions';
 
 export const initialFilmDetailsState: FilmDetailsState = [
   {
@@ -15,8 +15,6 @@ export const initialFilmDetailsState: FilmDetailsState = [
   [{ original_name: '', profile_path: '' }],
   [{ id: '', key: '', name: '' }]
 ];
-
-export const topRatedFilmsState: Film[] = [];
 
 export const filmDetailsReducer = createReducer(
   initialFilmDetailsState,

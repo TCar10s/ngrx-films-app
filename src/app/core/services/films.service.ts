@@ -57,7 +57,7 @@ export class FilmsService {
       .get<BillboardResponse>(`${environment.API_URL}/search/movie`, {
         params,
       })
-      .pipe(map((resp) => resp.results));
+      .pipe(map(({ results }) => results));
   }
 
   getFilm = (id: string): Observable<Film> => {
@@ -106,6 +106,12 @@ export class FilmsService {
       );
   }
 
+  /*
+    El combineLatest recibe una cantidad x de observables y regresa
+    un array con todas las respuestas de los observables cuando todos ya
+    han emitido por lo menos 1 valor.
+  */
+
   getFilmDetails = (id: string): Observable<FilmDetails> => {
     return combineLatest([
       this.getFilm(id),
@@ -127,5 +133,4 @@ export class FilmsService {
         catchError((error) => of([]))
       );
   }
-
 }

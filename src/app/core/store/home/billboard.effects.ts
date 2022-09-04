@@ -4,8 +4,8 @@ import { EMPTY, switchMap, take } from 'rxjs';
 import { FilmsService } from '@core/services/films.service';
 import { catchError, map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
-import { AppState } from '@state/app.state';
-import { addFilmsToBillboard, loadInitialBillboard, loadMoreBillboard } from '@state/actions/billboard.actions';
+import { AppState } from '@store/app.state';
+import { addFilmsToBillboard, loadInitialBillboard, loadMoreBillboard } from '@store/home/billboard.actions';
 
 @Injectable()
 export class BillboardEffects {
