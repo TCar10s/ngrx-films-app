@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { AppState } from '@core/store/app.state';
 import { selectTopRatedFilms } from '@core/store/category';
 import { CategoryActions } from '@core/store/category';
+import { CATEGORIES } from '@core/utils/stote.enums';
 
 @Component({
   selector: 'app-top-rated',
@@ -21,10 +22,10 @@ export class TopRatedComponent implements OnInit {
   }
 
   getInitialFilms = (): void => {
-    this.store.dispatch(CategoryActions.loadInitialTopRatedFilms({ category: 'top_rated' }));
+    this.store.dispatch(CategoryActions.loadInitialTopRatedFilms({ category: CATEGORIES.TopRated }));
   };
 
   loadMoreFilms = (): void => {
-    this.store.dispatch(CategoryActions.loadMoreTopRatedFilms({ category: 'top_rated' }));
+    this.store.dispatch(CategoryActions.loadMoreTopRatedFilms({ category: CATEGORIES.TopRated }));
   };
 }

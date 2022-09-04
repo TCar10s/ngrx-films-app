@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Film } from '@core/interfaces/film';
 import { AppState } from '@core/store/app.state';
 import { CategoryActions, selectUpcomingFilms } from '@core/store/category';
+import { CATEGORIES } from '@core/utils/stote.enums';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
@@ -21,13 +22,13 @@ export class UpcomingComponent implements OnInit {
 
   getInitialFilms = (): void => {
     this.store.dispatch(
-      CategoryActions.loadInitialUpcomingFilms({ category: 'upcoming' })
+      CategoryActions.loadInitialUpcomingFilms({ category: CATEGORIES.Upcoming })
     );
   };
 
   loadMoreFilms = (): void => {
     this.store.dispatch(
-      CategoryActions.loadMoreUpcomingFilms({ category: 'upcoming' })
+      CategoryActions.loadMoreUpcomingFilms({ category: CATEGORIES.Upcoming })
     );
   };
 }

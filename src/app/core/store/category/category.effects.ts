@@ -1,6 +1,6 @@
 import { CategoryActions } from '@core/store/category';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, switchMap, take, tap } from 'rxjs';
+import { EMPTY, switchMap, take } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { FilmsService } from '@core/services/films.service';
@@ -15,7 +15,6 @@ export class CategoryEffects {
         CategoryActions.loadInitialTopRatedFilms,
         CategoryActions.loadInitialUpcomingFilms
       ),
-      tap(({ category }) => console.log(category)),
       switchMap(({ category }) =>
         this.filmsService.getByCategory(category).pipe(
           map((films) => {
@@ -55,5 +54,6 @@ export class CategoryEffects {
     )
   );
 
-  constructor(private actions$: Actions, private filmsService: FilmsService) {}
+  constructor(private actions$: Actions, private filmsService: FilmsService) {
+  }
 }

@@ -8,6 +8,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { BillboardEffects } from '@store/home';
 import { FilmEffects } from '@store/film';
 import { CategoryEffects } from '@core/store/category';
+import { SearchEffects } from '@store/search/search.effects';
 
 @NgModule({
   imports: [
@@ -17,11 +18,15 @@ import { CategoryEffects } from '@core/store/category';
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([ BillboardEffects, FilmEffects, CategoryEffects ]),
+    EffectsModule.forRoot([
+      BillboardEffects,
+      FilmEffects,
+      CategoryEffects,
+      SearchEffects,
+    ]),
   ],
   exports: [NavbarComponent],
   declarations: [],
   providers: [],
 })
-export class CoreModule {
-}
+export class CoreModule {}

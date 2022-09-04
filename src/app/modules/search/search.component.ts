@@ -1,26 +1,29 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { FilmsService } from 'src/app/core/services/films.service';
 import { Film } from '@core/interfaces/film';
+import { AppState } from '@core/store/app.state';
+import { searchFilms } from '@core/store/search/search.actions';
+import { selectSearchFeature } from '@core/store/search/search.selector';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit {
-
   /*
     Obtenemos el valor del url mediante un Observable, ya que cuando
     nos encontremos en este vista el valor puede cambiar.
   */
 
-  public films$!: Observable<Film[]>;
+  public films$: Observable<Film[]> = this.store.select(selectSearchFeature);
   public textSearch: string;
 
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private filmService: FilmsService
+    private store: Store<AppState>,
+    private activatedRoute: ActivatedRoute
   ) {
     this.textSearch = '';
   }
@@ -32,7 +35,7 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  searchMovie = (text: string) => {
-    this.films$ = this.filmService.searchFilms(text);
-  }
+  searchMovie = (query: string) => {
+    this.store.dispatch(searchFilms({ query }));
+  };
 }
