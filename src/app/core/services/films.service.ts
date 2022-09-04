@@ -21,13 +21,14 @@ import { UtilitiesService } from '@core/services/utilities.service';
 })
 export class FilmsService {
   private filmByCategory: number;
-  public loadingMoreFilms: boolean;
   private billboardPage: number;
 
-  constructor(private http: HttpClient, private utilitiesService: UtilitiesService) {
+  constructor(
+    private http: HttpClient,
+    private utilitiesService: UtilitiesService
+  ) {
     this.filmByCategory = 1;
     this.billboardPage = 1;
-    this.loadingMoreFilms = false;
   }
 
   get params(): any {
@@ -48,17 +49,17 @@ export class FilmsService {
         map(this.utilitiesService.adapterFilmsProps),
         tap(() => this.billboardPage++)
       );
-  }
+  };
 
-  searchFilms = (text: string): Observable<Film[]> => {
-    const params = {...this.params, page: '1', query: text};
+  searchFilms = (query: string): Observable<Film[]> => {
+    const params = { ...this.params, page: '1', query };
 
     return this.http
       .get<BillboardResponse>(`${environment.API_URL}/search/movie`, {
         params,
       })
       .pipe(map(({ results }) => results));
-  }
+  };
 
   getFilm = (id: string): Observable<Film> => {
     return this.http
@@ -69,7 +70,7 @@ export class FilmsService {
         map(this.utilitiesService.adapterFilmProps),
         catchError((error) => of({} as Film))
       );
-  }
+  };
 
   getCast = (id: string): Observable<Cast[]> => {
     return this.http
@@ -77,19 +78,20 @@ export class FilmsService {
         params: this.params,
       })
       .pipe(
-        map(({cast}) =>
-          cast.map((actor) => ({
-            original_name: actor.original_name,
-            profile_path: actor.profile_path,
-          }))
-          .slice(0, 10)
+        map(({ cast }) =>
+          cast
+            .map((actor) => ({
+              original_name: actor.original_name,
+              profile_path: actor.profile_path,
+            }))
+            .slice(0, 10)
         ),
         catchError((error) => of([]))
       );
-  }
+  };
 
   getTrailer = (id: string): Observable<Trailer[]> => {
-    const params = {...this.params, language: 'en-US'};
+    const params = { ...this.params, language: 'en-US' };
 
     return this.http
       .get<TrailerResponse>(`${environment.API_URL}/movie/${id}/videos`, {
@@ -97,14 +99,16 @@ export class FilmsService {
       })
       .pipe(
         map(({ results }) => results),
-        map((trailers) => trailers.map((trailer) => ({
-          id: trailer.id,
-          key: trailer.key,
-          name: trailer.name,
-        }))),
+        map((trailers) =>
+          trailers.map((trailer) => ({
+            id: trailer.id,
+            key: trailer.key,
+            name: trailer.name,
+          }))
+        ),
         catchError((error) => of([]))
       );
-  }
+  };
 
   /*
     El combineLatest recibe una cantidad x de observables y regresa
@@ -118,10 +122,10 @@ export class FilmsService {
       this.getCast(id),
       this.getTrailer(id),
     ]);
-  }
+  };
 
   getByCategory = (category: string): Observable<Film[]> => {
-    const params = {...this.params, page: this.filmByCategory.toString()};
+    const params = { ...this.params, page: this.filmByCategory.toString() };
     return this.http
       .get<BillboardResponse>(`${environment.API_URL}/movie/${category}`, {
         params,
@@ -132,5 +136,5 @@ export class FilmsService {
         tap(() => this.filmByCategory++),
         catchError((error) => of([]))
       );
-  }
+  };
 }
