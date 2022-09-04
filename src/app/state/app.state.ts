@@ -2,7 +2,7 @@ import { BillboardState } from '@core/interfaces/billboard-response';
 import { ActionReducerMap } from '@ngrx/store';
 import { billboardReducer } from '@state/reducers/billboard.reducers';
 import { Film, FilmDetailsState } from '@core/interfaces/film';
-import { filmDetailsReducer, topRatedFilmsReducer } from '@state/reducers/film.reducers';
+import { filmDetailsReducer, topRatedFilmsReducer } from './reducers';
 
 export interface AppState {
   billboard: BillboardState;
