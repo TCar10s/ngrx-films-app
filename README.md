@@ -1,16 +1,18 @@
-# FilmsApp
+# FilmsApp TMDb API - NGRX
 
 <div align="center">
-  <h3>
+  <h2>
     <a href="https://films-app-ng.netlify.app/home" target="_blank">
       Demo
     </a>
-  </h3>
+  </h2>
 </div>
+
+A simple app to search movies and series using the TMDb API and NGRX for state management.
 
 ## Overview
 
-![screenshot](https://raw.githubusercontent.com/TCar10s/ng-films-app/main/src/assets/img/screenshot-desktop.jpeg)
+![screenshot](https://raw.githubusercontent.com/TCar10s/ng-films-app/main/src/assets/img/app-home.png)
 
 ## Notas
 
@@ -28,6 +30,6 @@ ng serve
 
 ## Contact
 
-- Website [www.tutoscarlos.xyz](https://www.tutoscarlos.xyz)
+- Website [www.carloslobo.dev](https://carloslobo.dev)
 - GitHub [@TCar10s](https://https://github.com/TCar10s)
 - Twitter [@Tutos_Carlos11](https://twitter.com/Tutos_Carlos11)
