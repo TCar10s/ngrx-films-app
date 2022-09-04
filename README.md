@@ -12,7 +12,7 @@ A simple app to search movies and series using the TMDb API and NGRX for state m
 
 ## Overview
 
-![screenshot](https://raw.githubusercontent.com/TCar10s/ng-films-app/main/src/assets/img/app-home.png)
+![screenshot](https://raw.githubusercontent.com/TCar10s/ng-films-app/ngrx/src/assets/img/app-home.png)
 
 ## Notas
 
