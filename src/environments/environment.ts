@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  APIKEY: '53ceb5e3f56ca0319b494fb285f4283a',
+  APIKEY: '',
   API_URL: 'https://api.themoviedb.org/3',
 };
 
