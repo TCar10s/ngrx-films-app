@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FilmsPosterGridComponent } from './films-poster-grid.component';
 import { RatingModule } from 'ng-starrating';
 import { FilmCardComponent } from './film-card/film-card.component';
-import { SkeletonModule } from 'primeng/skeleton';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { TooltipModule } from 'primeng/tooltip';
@@ -18,7 +17,6 @@ import { PosterPipe } from '@shared/pipes/poster.pipe';
     CommonModule,
     RatingModule,
     PosterPipe,
-    SkeletonModule,
     ButtonModule,
     RippleModule,
     TooltipModule
