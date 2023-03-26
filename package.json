@@ -5,9 +5,6 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "config": "ts-node ./src/config-env.ts",
-    "start-vercel": "npm run config -- --environment=dev && ng serve",
-    "build-vercel": "npm run config -- --environment=prod && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
