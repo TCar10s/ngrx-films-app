@@ -33,7 +33,7 @@ export class FilmsService {
 
   get params(): any {
     return {
-      api_key: environment.APIKEY,
+      api_key: environment.API_KEY,
       language: 'es-ES',
       page: this.billboardPage.toString(),
     };
