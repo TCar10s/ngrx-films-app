@@ -3,8 +3,13 @@ import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  template: `
+    <app-navbar></app-navbar>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  `,
 })
 export class AppComponent implements OnInit {
   value = 'films-app';

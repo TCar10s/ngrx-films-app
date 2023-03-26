@@ -1,10 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Film } from '@core/interfaces/film';
+import { PosterPipe } from '@shared/pipes/poster.pipe';
+import { RatingModule } from 'ng-starrating';
 
 @Component({
   selector: 'app-film-card',
   templateUrl: './film-card.component.html',
-  styleUrls: ['./film-card.component.css']
+  styleUrls: ['./film-card.component.css'],
+  standalone: true,
+  imports: [
+    CommonModule,
+    RatingModule,
+    PosterPipe
+  ]
 })
 export class FilmCardComponent implements OnInit {
 

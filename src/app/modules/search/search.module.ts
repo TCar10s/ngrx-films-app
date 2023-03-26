@@ -3,17 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { SearchComponent } from './search.component';
 import { SearchRoutingModule } from './search-routing.module';
-import { FilmsPosterGridModule } from '../../shared/films-poster-grid/films-poster-grid.module';
-import { DividerModule } from 'primeng/divider';
+import { PrimeNgModule } from '@shared/primeng.module';
+import { FilmsPosterGridComponent } from '@shared/films-poster-grid/films-poster-grid.component';
 
 @NgModule({
   declarations: [SearchComponent],
   imports: [
     CommonModule,
     SearchRoutingModule,
-    FilmsPosterGridModule,
-    DividerModule,
+    FilmsPosterGridComponent,
+    PrimeNgModule,
   ],
 })
-export class SearchModule {
-}
+export class SearchModule {}
