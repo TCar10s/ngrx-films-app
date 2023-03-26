@@ -3,9 +3,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "baseUrl": "./",
-    "types": [
-      "node"
-    ],
     "strict": true,
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
