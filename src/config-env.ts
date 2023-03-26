@@ -16,9 +16,10 @@ if (environment === 'prod') {
 
 const envConfigFile = `
 export const environment = {
-    production: false,
+    production: true,
     API_KEY: "${apiURL}",
-    API_URL: "https://api.themoviedb.org/3"`;
+    API_URL: "https://api.themoviedb.org/3"
+}`;
 
 fs.writeFile(targetPath, envConfigFile, (err: any) => {
   if (err) console.log(err);
